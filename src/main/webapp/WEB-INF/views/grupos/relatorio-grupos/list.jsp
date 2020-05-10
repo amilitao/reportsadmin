@@ -69,8 +69,8 @@
 					</tr>
 					<c:forEach items="${relatorios}" var="relatorio">					
 						<tr class="item">								
-							<td class="w3-border">${relatorio.id_relatorio}</td>
-							<td class="w3-border">${relatorio.nome_relatorio}</td>
+							<td class="w3-border">${relatorio.id}</td>
+							<td class="w3-border">${relatorio.nome}</td>
 							<td class="w3-border">${relatorio.descricao}</td>
 							<td class="w3-border">${relatorio.tipoRelatorio}</td>
 							<td class="w3-border">${relatorio.servidor}</td>

@@ -12,7 +12,7 @@
 		<a href="<c:url value="/dashboard/" />"
 			class="w3-bar-item w3-button w3-padding w3-hover-red"> <i
 			class="fa fa-dashboard"></i> Dashboard
-		</a> <a href="<c:url value="/reenvio-de-relatorio/" />"
+		</a> <a href="<c:url value="/envio-de-relatorio/" />"
 			class="w3-bar-item w3-button w3-padding w3-hover-red">
 			 <i class="fa fa-envelope-o"></i> Envio de relatórios
 		</a>	

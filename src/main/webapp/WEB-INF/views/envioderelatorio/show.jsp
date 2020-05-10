@@ -5,7 +5,7 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 
-<tags:pageTemplate titulo="Reenvio de Relatorio">
+<tags:pageTemplate titulo="Envio de Relatorio">
 
 	<jsp:attribute name="extraScripts">
 		 <script>
@@ -106,7 +106,7 @@
 					</p>				
 				</div>
 				
-				<input type="hidden" name="id_funcionario"
+				<input type="hidden" name="id"
 						value="${funcionario.id}" />
 				
 				<div class="w3-col s4 w3-padding" style="width: 500px">
