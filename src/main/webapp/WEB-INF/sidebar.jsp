@@ -14,13 +14,37 @@
 			class="fa fa-dashboard"></i> Dashboard
 		</a> <a href="<c:url value="/reenvio-de-relatorio/" />"
 			class="w3-bar-item w3-button w3-padding w3-hover-red">
-			 <i class="fa fa-mail-reply-all"></i> Reenvio de relatórios
+			 <i class="fa fa-envelope-o"></i> Envio de relatórios
 		</a>	
+		 <a href="<c:url value="/agendamento/" />"
+			class="w3-bar-item w3-button w3-padding w3-hover-red"> <i
+			class="fa fa-calendar"></i> Agenda de envio de relatórios
+		</a>
+		
 		<a href="<c:url value="/relatorio/" />"
 			class="w3-bar-item w3-button w3-padding w3-hover-red"> <i
 			class="fa fa-file-pdf-o"></i> Relatorios
 		</a>
-		<a href="<c:url value="/servidor/" />"
+		
+		 <a href="<c:url value="/funcionario/" />"
+			class="w3-bar-item w3-button w3-padding w3-hover-red"> <i
+			class="fa fa-user"></i> Funcionários
+		</a>
+		
+		
+		<button class="w3-button w3-block w3-left-align w3-hover-red" onclick="myGruposFunc()">
+		<i class="fa fa-object-group"></i> Grupos <i class="fa fa-caret-down"></i>
+		</button>
+		<div id="grupos" class="w3-hide w3-white w3-card">
+			<a href="<c:url value="/grupos/" />" class="w3-bar-item w3-button"> Grupos</a> 
+			<a href="<c:url value="/funcionario-grupos/" />" class="w3-bar-item w3-button"> Funcionário - Grupos</a>
+			<a href="<c:url value="/relatorio-grupos/" />" class="w3-bar-item w3-button"> Relatório - Grupos</a>			
+		</div>
+
+		<a href="<c:url value="/departamento/" />"
+			class="w3-bar-item w3-button w3-padding w3-hover-red"> <i
+			class="fa fa-sitemap"></i> Departamentos
+		</a> <a href="<c:url value="/servidor/" />"
 			class="w3-bar-item w3-button w3-padding w3-hover-red"> <i
 			class="fa fa-server"></i> Servidores
 		</a>

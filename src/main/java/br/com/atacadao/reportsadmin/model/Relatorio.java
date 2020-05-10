@@ -1,14 +1,24 @@
 package br.com.atacadao.reportsadmin.model;
 
 import java.io.Serializable;
+import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 
 @Entity
@@ -29,6 +39,19 @@ public class Relatorio implements Serializable {
 	
 	@Enumerated(EnumType.ORDINAL)
 	private TipoRelatorio tipoRelatorio;
+	
+	@ManyToMany(mappedBy = "relatorios", fetch = FetchType.EAGER)
+	private Set<Funcionario> funcionarios = new HashSet<Funcionario>();;
+
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "relatorio_grupos", joinColumns = @JoinColumn(name = "relatorio_id"), inverseJoinColumns = @JoinColumn(name = "grupos_id"))
+	private Set<Grupos> grupos = new HashSet<Grupos>();
+	
+	@Enumerated(EnumType.ORDINAL)
+	public StatusRelatorio status;
+
+	@DateTimeFormat(iso = ISO.DATE)
+	private Calendar dtAtualizacao;
 
 	public Long getId() {
 		return id;
@@ -61,6 +84,23 @@ public class Relatorio implements Serializable {
 	public void setServidor(Servidor servidor) {
 		this.servidor = servidor;
 	}
+		
+
+	public Set<Funcionario> getFuncionarios() {
+		return funcionarios;
+	}
+
+	public void setFuncionarios(Set<Funcionario> funcionarios) {
+		this.funcionarios = funcionarios;
+	}
+
+	public Set<Grupos> getGrupos() {
+		return grupos;
+	}
+
+	public void setGrupos(Set<Grupos> grupos) {
+		this.grupos = grupos;
+	}
 
 	public TipoRelatorio getTipoRelatorio() {
 		return tipoRelatorio;
@@ -69,6 +109,24 @@ public class Relatorio implements Serializable {
 	public void setTipoRelatorio(TipoRelatorio tipoRelatorio) {
 		this.tipoRelatorio = tipoRelatorio;
 	}
+
+	public StatusRelatorio getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusRelatorio status) {
+		this.status = status;
+	}
+
+	public Calendar getDtAtualizacao() {
+		return dtAtualizacao;
+	}
+
+	public void setDtAtualizacao(Calendar dtAtualizacao) {
+		this.dtAtualizacao = dtAtualizacao;
+	}
+
+	
 	
 	
 	
