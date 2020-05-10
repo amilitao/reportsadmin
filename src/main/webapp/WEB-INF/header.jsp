@@ -9,7 +9,7 @@
 		</button>
 
 		<span class="w3-bar-item w3-margin-left w3-margin-right w3-theme-d4 w3-red">
-			<i class="fa fa-calendar"></i> RELATÓRIOS DIÁRIOS
+			<i class="fa fa-calendar"></i> REPORTS ADMIN
 		</span>
 
 		<span class="w3-bar-item w3-right w3-theme-d4"> <i

@@ -30,7 +30,7 @@ public class RelatorioDAO {
 	}
 
 	public List<Relatorio> list() {
-		return manager.createQuery("select distinct(r) from Relatorio r order by r.nome_relatorio ASC" ,
+		return manager.createQuery("select distinct(r) from Relatorio r order by r.nome ASC" ,
 				Relatorio.class).getResultList();
 	}
 	

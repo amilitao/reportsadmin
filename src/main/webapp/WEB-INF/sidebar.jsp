@@ -15,7 +15,17 @@
 		</a> <a href="<c:url value="/reenvio-de-relatorio/" />"
 			class="w3-bar-item w3-button w3-padding w3-hover-red">
 			 <i class="fa fa-mail-reply-all"></i> Reenvio de relatórios
-		</a>	</div>
+		</a>	
+		<a href="<c:url value="/relatorio/" />"
+			class="w3-bar-item w3-button w3-padding w3-hover-red"> <i
+			class="fa fa-file-pdf-o"></i> Relatorios
+		</a>
+		<a href="<c:url value="/servidor/" />"
+			class="w3-bar-item w3-button w3-padding w3-hover-red"> <i
+			class="fa fa-server"></i> Servidores
+		</a>
+		
+		</div>
 </nav>
 
 <!-- Overlay effect when opening sidebar on small screens -->
