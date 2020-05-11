@@ -1,11 +1,11 @@
 package br.com.atacadao.reportsadmin.model;
 
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,27 +19,30 @@ import org.hibernate.validator.constraints.NotBlank;
 
 
 @Entity
-public class Funcionario {
+public class Funcionario implements Serializable{
 	
+	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotBlank(message="Este campo n�o pode ser vazio")
+	@NotBlank(message="Este campo não pode ser vazio")
 	private String nome;
 	
 	@Email(message="Email com formato incorreto")
-	@NotBlank(message="Este campo n�o pode ser vazio")
+	@NotBlank(message="Este campo não pode ser vazio")
 	private String email;
 
 	@ManyToOne
 	private Departamento departamento;
 	
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany
 	@JoinTable(name = "agenda", joinColumns = @JoinColumn(name = "funcionario_id"), inverseJoinColumns = @JoinColumn(name = "relatorio_id"))
 	private Set<Relatorio> relatorios;
 	
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany
 	@JoinTable(name = "funcionario_grupos", joinColumns = @JoinColumn(name = "funcionario_id"), inverseJoinColumns = @JoinColumn(name = "grupos_id"))	
 	private Set<Grupos> grupos;
 

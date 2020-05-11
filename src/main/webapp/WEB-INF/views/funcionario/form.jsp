@@ -37,7 +37,7 @@
 							<form:errors path="email" />
 						</p>
 					</div>
-						<div class="w3-col m3">
+					<div class="w3-col m3">
 						<p>
 							<label for="departamento"><b>Departamento </b></label><br>
 							<form:select path="departamento.id" class="w3-select">
@@ -47,7 +47,9 @@
 							</form:select>
 							<form:errors path="departamento" />
 						</p>
-					</div>						
+					</div>			
+									
+												
 				</div>				
 				<hr>			
 				<button class="w3-btn w3-dark-grey w3-left-align w3-hover-red">Salvar</button>	
