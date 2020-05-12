@@ -2,7 +2,6 @@ package br.com.atacadao.reportsadmin.model;
 
 
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -92,28 +91,8 @@ public class Funcionario implements Serializable{
 
 	public void setGrupos(Set<Grupos> grupos) {
 		this.grupos = grupos;
-	}
-	
-public Set<Relatorio> getRelatoriosPermitidos(){
-		
-		Set<Relatorio> permitidos = new HashSet<>();
-		
-		if (!this.getGrupos().isEmpty()) {
+	}	
 
-			for (Grupos grupos : this.getGrupos()) {
-
-				if (!grupos.getRelatorios().isEmpty()) {
-
-					for (Relatorio relatorio : grupos.getRelatorios()) {
-						permitidos.add(relatorio);
-					}
-				}
-			}
-		}
-		
-		return permitidos;
-		
-	}
 	
 	
 

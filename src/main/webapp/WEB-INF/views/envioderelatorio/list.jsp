@@ -72,7 +72,7 @@
 						<td class="w3-border">${funcionario.email}</td>
 						<td class="w3-border">${funcionario.departamento}</td>
 						<td class="w3-center">
-							<a href="${spring:mvcUrl('RC#show').arg(0,funcionario.id).build()}">
+							<a href="${spring:mvcUrl('ERC#show').arg(0,funcionario.id).build()}">
 								<i class="fa fa-folder-open-o" style="font-size:24px"></i>
 							</a>						
 						</td>

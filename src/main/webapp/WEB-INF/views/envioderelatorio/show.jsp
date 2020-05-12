@@ -104,10 +104,7 @@
 					<p>
 						<b>Destinatário:</b>
 					</p>				
-				</div>
-				
-				<input type="hidden" name="id"
-						value="${funcionario.id}" />
+				</div>				
 				
 				<div class="w3-col s4 w3-padding" style="width: 500px">
 					<label class="w3-input w3-border">${funcionario.email}</label>
@@ -153,13 +150,13 @@
 										pattern="dd/MM/yyyy HH:mm:ss"
 										value="${relatorio.dtAtualizacao.getTime()}" /></td>	
 								<td class="w3-border w3-center">
-									<a href="${spring:mvcUrl('RC#download').arg(0,funcionario.id).arg(1, relatorio.id).build()}" onclick="document.getElementById('spin').style.display='block'" >
+									<a href="${spring:mvcUrl('ERC#download').arg(0,funcionario.id).arg(1, relatorio.id).build()}" onclick="document.getElementById('spin').style.display='block'" >
 								<i class="fa fa-refresh" style="font-size: 24px"></i>
 								</a>
 								</td>								
 								<td
 									class="w3-border w3-center">									
-									<a href="${spring:mvcUrl('RC#viewPDF').arg(0, relatorio.id).arg(1, relatorio.nome).build()}" 
+									<a href="${spring:mvcUrl('ERC#viewPDF').arg(0, relatorio.id).arg(1, relatorio.nome).build()}" 
 									target="_blank"><i class="fa fa-eye"
 										style="font-size: 24px"></i></a> 
 								</td>														
