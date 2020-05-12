@@ -100,17 +100,17 @@
 
 			<div class="w3-panel w3-padding-large">
 
-				<div class="w3-col s1 w3-padding">					
-					<p>
-						<b>Destinatário:</b>
-					</p>				
-				</div>				
+				<div class="w3-bar">					
+					<div class="w3-bar-item">
+						<p><b>DESTINATÁRIO:</b></p>
+					</div>				
+					<div class="w3-bar-item">
+						<label class="w3-input w3-border w3-white" style="width: 400px">${funcionario.email}</label>
+					</div>
+					<div class="w3-bar-item">
+						<button class="w3-button w3-red">Enviar</button>
+					</div>
 				
-				<div class="w3-col s4 w3-padding" style="width: 500px">
-					<label class="w3-input w3-border">${funcionario.email}</label>
-				</div>
-				<div class="w3-col s2 w3-padding">
-					<button class="w3-button w3-red">Enviar</button>
 				</div>
 
 			</div>	
@@ -121,7 +121,7 @@
 
 			<div class="w3-responsive" style="height: 450px; overflow: auto;">
 					<table id="id01" class="w3-table-all w3-border">
-						<tr>
+						<tr class="w3-dark-gray">
 							<th class="w3-border"></th>
 							<th class="w3-border">Relatório</th>
 							<th class="w3-border">Estabelecimento</th>
