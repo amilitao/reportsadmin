@@ -47,7 +47,7 @@
 
 		<div class="w3-panel w3-bar w3-leftbar w3-text-dark-grey w3-border-red w3-pale-red">
 			<h4 class="w3-bar-item">
-				<i class="fa fa-mail-reply-all"></i><b> Envio de relatórios</b>
+				<i class="fa fa-envelope-o"></i><b> Envio de relatórios - funcionários</b>
 			</h4>
 			<p>
 			<input oninput="w3.filterHTML('#id01', '.item', this.value)"
@@ -72,7 +72,7 @@
 						<td class="w3-border">${funcionario.email}</td>
 						<td class="w3-border">${funcionario.departamento}</td>
 						<td class="w3-center">
-							<a href="${spring:mvcUrl('RC#show').arg(0,funcionario.id).build()}">
+							<a href="${spring:mvcUrl('ERC#show').arg(0,funcionario.id).build()}">
 								<i class="fa fa-folder-open-o" style="font-size:24px"></i>
 							</a>						
 						</td>

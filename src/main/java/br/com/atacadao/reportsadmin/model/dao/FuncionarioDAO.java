@@ -32,7 +32,7 @@ public class FuncionarioDAO {
 	}
 
 	public List<Funcionario> list() {
-		return manager.createQuery("select distinct(f) from Funcionario f order by nome" 
+		return manager.createQuery("select distinct(f) from Funcionario f order by f.nome" 
 				, Funcionario.class).getResultList();
 	}
 

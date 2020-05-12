@@ -69,7 +69,8 @@
 					<th class="w3-border">Nome</th>	
 					<th class="w3-border">Servidor</th>
 					<th class="w3-border">Descrição</th>					
-					<th class="w3-border">Tipo</th>					
+					<th class="w3-border">Tipo</th>		
+					<th class="w3-border w3-center">Gerenciar</th>			
 										
 				</tr>
 				<c:forEach items="${relatorios}" var="relatorio">
@@ -79,7 +80,14 @@
 						<td class="w3-border">${relatorio.servidor}</td>
 						<td class="w3-border">${relatorio.descricao}</td>
 						<td class="w3-border">${relatorio.tipoRelatorio}</td>
-														
+						<td class="w3-center">
+							<div class="w3-bar">
+								<%-- <a href="${spring:mvcUrl('RC#remove').arg(0,relatorio.id_relatorio).build()}" 
+								class="w3-bar-item w3-button w3-tiny w3-padding-small" title="remover"><i class="fa fa-remove" style="font-size: 18px"></i></a> --%>
+								 <a href="${spring:mvcUrl('RC#update').arg(0,relatorio.id).build()}" 
+								 class="w3-bar-item w3-button w3-tiny w3-padding-small" title="editar"><i class="fa fa-edit" style="font-size: 18px"></i></a>								 
+							</div>
+						</td>								
 					</tr>
 				</c:forEach>
 

@@ -2,11 +2,13 @@ package br.com.atacadao.reportsadmin.model;
 
 
 import java.io.Serializable;
+<<<<<<< HEAD
 import java.util.HashSet;
+=======
+>>>>>>> branch 'master' of https://github.com/amilitao/reportsadmin.git
 import java.util.Set;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,21 +31,21 @@ public class Funcionario implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotBlank(message="Este campo n�o pode ser vazio")
+	@NotBlank(message="Este campo não pode ser vazio")
 	private String nome;
 	
 	@Email(message="Email com formato incorreto")
-	@NotBlank(message="Este campo n�o pode ser vazio")
+	@NotBlank(message="Este campo não pode ser vazio")
 	private String email;
 
 	@ManyToOne
 	private Departamento departamento;
 	
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany
 	@JoinTable(name = "agenda", joinColumns = @JoinColumn(name = "funcionario_id"), inverseJoinColumns = @JoinColumn(name = "relatorio_id"))
 	private Set<Relatorio> relatorios;
 	
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany
 	@JoinTable(name = "funcionario_grupos", joinColumns = @JoinColumn(name = "funcionario_id"), inverseJoinColumns = @JoinColumn(name = "grupos_id"))	
 	private Set<Grupos> grupos;
 
@@ -93,28 +95,8 @@ public class Funcionario implements Serializable{
 
 	public void setGrupos(Set<Grupos> grupos) {
 		this.grupos = grupos;
-	}
-	
-public Set<Relatorio> getRelatoriosPermitidos(){
-		
-		Set<Relatorio> permitidos = new HashSet<>();
-		
-		if (!this.getGrupos().isEmpty()) {
+	}	
 
-			for (Grupos grupos : this.getGrupos()) {
-
-				if (!grupos.getRelatorios().isEmpty()) {
-
-					for (Relatorio relatorio : grupos.getRelatorios()) {
-						permitidos.add(relatorio);
-					}
-				}
-			}
-		}
-		
-		return permitidos;
-		
-	}
 	
 	
 

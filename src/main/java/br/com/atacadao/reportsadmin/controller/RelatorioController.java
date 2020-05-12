@@ -8,12 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.atacadao.reportsadmin.model.Relatorio;
+import br.com.atacadao.reportsadmin.model.Servidor;
 import br.com.atacadao.reportsadmin.model.TipoRelatorio;
 import br.com.atacadao.reportsadmin.model.dao.RelatorioDAO;
 import br.com.atacadao.reportsadmin.model.dao.ServidorDAO;
@@ -53,7 +55,13 @@ public class RelatorioController {
 			redirectAttributes.addFlashAttribute("sucesso", "Relatorio cadastrado com sucesso");
 		} else {	
 			
-			relatorioDAO.update(relatorio);
+			Relatorio r = relatorioDAO.find(relatorio.getId());
+			
+			r.setNome(relatorio.getNome());
+			r.setServidor(relatorio.getServidor());
+			r.setDescricao(relatorio.getDescricao());		
+			r.setTipoRelatorio(relatorio.getTipoRelatorio());			
+		
 			redirectAttributes.addFlashAttribute("sucesso", "Relatorio atualizado com sucesso");
 		}
 		
@@ -72,5 +80,19 @@ public class RelatorioController {
 
 	}
 	
+	@RequestMapping("/editar/{id}")
+	public ModelAndView update(@PathVariable("id") long id, RedirectAttributes redirectAttributes) {
+
+		ModelAndView mav = new ModelAndView("relatorio/form");
+		Relatorio relatorio = relatorioDAO.find(id);
+		List<Servidor> servidores = servidorDAO.list();
+
+		mav.addObject("servidores", servidores);
+		mav.addObject("relatorio", relatorio);
+
+		redirectAttributes.addFlashAttribute("sucesso", "Relatorio atualizado com sucesso");
+
+		return mav;
+	}
 
 }

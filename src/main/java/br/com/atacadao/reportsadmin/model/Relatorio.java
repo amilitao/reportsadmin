@@ -2,13 +2,11 @@ package br.com.atacadao.reportsadmin.model;
 
 import java.io.Serializable;
 import java.util.Calendar;
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -40,12 +38,12 @@ public class Relatorio implements Serializable {
 	@Enumerated(EnumType.ORDINAL)
 	private TipoRelatorio tipoRelatorio;
 	
-	@ManyToMany(mappedBy = "relatorios", fetch = FetchType.EAGER)
-	private Set<Funcionario> funcionarios = new HashSet<Funcionario>();;
+	@ManyToMany(mappedBy = "relatorios")
+	private Set<Funcionario> funcionarios;
 
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany
 	@JoinTable(name = "relatorio_grupos", joinColumns = @JoinColumn(name = "relatorio_id"), inverseJoinColumns = @JoinColumn(name = "grupos_id"))
-	private Set<Grupos> grupos = new HashSet<Grupos>();
+	private Set<Grupos> grupos;
 	
 	@Enumerated(EnumType.ORDINAL)
 	public StatusRelatorio status;

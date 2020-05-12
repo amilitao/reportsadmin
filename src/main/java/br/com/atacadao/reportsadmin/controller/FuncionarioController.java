@@ -57,11 +57,12 @@ public class FuncionarioController {
 		}else {
 		
 			Funcionario f = funcionarioDAO.find(funcionario.getId());
+					
+			f.setNome(funcionario.getNome());
+			f.setEmail(funcionario.getEmail());
+			f.setDepartamento(funcionario.getDepartamento());
 			
-		    funcionario.setGrupos(f.getGrupos());	
-		    funcionario.setRelatorios(f.getRelatorios());
-			funcionarioDAO.update(funcionario);		
-			
+						
 			redirectAttributes.addFlashAttribute("sucesso", "Funcionario atualizado com sucesso");
 		}
 		

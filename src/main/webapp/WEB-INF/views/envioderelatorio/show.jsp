@@ -87,7 +87,7 @@
 		<div
 				class="w3-panel w3-bar w3-leftbar w3-text-dark-grey w3-border-red w3-pale-red">
 			<h4 class="w3-bar-item">
-				<i class="fa fa-mail-reply-all"></i><b> Envio de relatórios</b>
+				<i class="fa fa-envelope-o"></i><b> Envio de relatórios</b>
 			</h4>
 			<p>
 				<input oninput="w3.filterHTML('#id01', '.item', this.value)"
@@ -100,20 +100,17 @@
 
 			<div class="w3-panel w3-padding-large">
 
-				<div class="w3-col s1 w3-padding">					
-					<p>
-						<b>Destinatário:</b>
-					</p>				
-				</div>
+				<div class="w3-bar">					
+					<div class="w3-bar-item">
+						<p><b>DESTINATÁRIO:</b></p>
+					</div>				
+					<div class="w3-bar-item">
+						<label class="w3-input w3-border w3-white" style="width: 400px">${funcionario.email}</label>
+					</div>
+					<div class="w3-bar-item">
+						<button class="w3-button w3-red">Enviar</button>
+					</div>
 				
-				<input type="hidden" name="id"
-						value="${funcionario.id}" />
-				
-				<div class="w3-col s4 w3-padding" style="width: 500px">
-					<label class="w3-input w3-border">${funcionario.email}</label>
-				</div>
-				<div class="w3-col s2 w3-padding">
-					<button class="w3-button w3-red">Enviar</button>
 				</div>
 
 			</div>	
@@ -124,7 +121,7 @@
 
 			<div class="w3-responsive" style="height: 450px; overflow: auto;">
 					<table id="id01" class="w3-table-all w3-border">
-						<tr>
+						<tr class="w3-dark-gray">
 							<th class="w3-border"></th>
 							<th class="w3-border">Relatório</th>
 							<th class="w3-border">Estabelecimento</th>
@@ -153,13 +150,13 @@
 										pattern="dd/MM/yyyy HH:mm:ss"
 										value="${relatorio.dtAtualizacao.getTime()}" /></td>	
 								<td class="w3-border w3-center">
-									<a href="${spring:mvcUrl('RC#download').arg(0,funcionario.id).arg(1, relatorio.id).build()}" onclick="document.getElementById('spin').style.display='block'" >
+									<a href="${spring:mvcUrl('ERC#download').arg(0,funcionario.id).arg(1, relatorio.id).build()}" onclick="document.getElementById('spin').style.display='block'" >
 								<i class="fa fa-refresh" style="font-size: 24px"></i>
 								</a>
 								</td>								
 								<td
 									class="w3-border w3-center">									
-									<a href="${spring:mvcUrl('RC#viewPDF').arg(0, relatorio.id).arg(1, relatorio.nome).build()}" 
+									<a href="${spring:mvcUrl('ERC#viewPDF').arg(0, relatorio.id).arg(1, relatorio.nome).build()}" 
 									target="_blank"><i class="fa fa-eye"
 										style="font-size: 24px"></i></a> 
 								</td>														
