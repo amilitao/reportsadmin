@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.atacadao.reportsadmin.model.Funcionario;
+import br.com.atacadao.reportsadmin.model.Grupos;
 import br.com.atacadao.reportsadmin.model.Relatorio;
 import br.com.atacadao.reportsadmin.model.dao.FuncionarioDAO;
 import br.com.atacadao.reportsadmin.model.dao.RelatorioDAO;
@@ -50,7 +51,7 @@ public class AgendamentoController {
 		Funcionario funcionario = funcionarioDAO.find(id);	
 
 		modelAndView.addObject("funcionario", funcionario);
-		modelAndView.addObject("permitidos", funcionario.getRelatoriosPermitidos());
+		modelAndView.addObject("permitidos", listaDeRelatoriosPermitidos(funcionario.getGrupos()));
 
 		return modelAndView;
 	}
@@ -77,6 +78,22 @@ public class AgendamentoController {
 		redirectAttributes.addFlashAttribute("sucesso", "Relatórios agendados atualizados com sucesso!");
 
 		return new ModelAndView("redirect:/agendamento/" + funcionario.getId());
+
+	}
+	
+	public Set<Relatorio> listaDeRelatoriosPermitidos(Set<Grupos> lista) {
+
+		Set<Relatorio> permitidos = new HashSet<>();
+		if (!lista.isEmpty()) {
+			for (Grupos grupos : lista) {
+				if (!grupos.getRelatorios().isEmpty()) {
+					for (Relatorio relatorio : grupos.getRelatorios()) {
+						permitidos.add(relatorio);
+					}
+				}
+			}
+		}
+		return permitidos;
 
 	}
 
