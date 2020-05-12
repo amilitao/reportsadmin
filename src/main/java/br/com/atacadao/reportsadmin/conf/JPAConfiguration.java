@@ -44,10 +44,10 @@ public class JPAConfiguration {
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");		
-		dataSource.setUrl("jdbc:mysql://localhost:3308/db_reportsadmin");
+		dataSource.setUrl("jdbc:mysql://localhost/db_reportsadmin");
 		
 		dataSource.setUsername("root");
-		dataSource.setPassword("");			
+		dataSource.setPassword("admin");			
 		
 		return dataSource;
 	}
@@ -55,7 +55,7 @@ public class JPAConfiguration {
 	
 	private Properties additionalProperties() {
 		Properties properties = new Properties();
-		properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
+		properties.setProperty("hibernate.hbm2ddl.auto", "update");
 		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
 		properties.setProperty("hibernate.show_sql", "true");
 		return properties;

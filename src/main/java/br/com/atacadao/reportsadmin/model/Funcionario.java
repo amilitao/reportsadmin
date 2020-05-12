@@ -1,6 +1,7 @@
 package br.com.atacadao.reportsadmin.model;
 
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,8 +20,11 @@ import org.hibernate.validator.constraints.NotBlank;
 
 
 @Entity
-public class Funcionario {
+public class Funcionario implements Serializable{
 	
+	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
