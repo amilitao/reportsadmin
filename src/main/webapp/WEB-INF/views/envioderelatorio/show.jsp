@@ -87,7 +87,7 @@
 		<div
 				class="w3-panel w3-bar w3-leftbar w3-text-dark-grey w3-border-red w3-pale-red">
 			<h4 class="w3-bar-item">
-				<i class="fa fa-mail-reply-all"></i><b> Envio de relatórios</b>
+				<i class="fa fa-envelope-o"></i><b> Envio de relatórios</b>
 			</h4>
 			<p>
 				<input oninput="w3.filterHTML('#id01', '.item', this.value)"
