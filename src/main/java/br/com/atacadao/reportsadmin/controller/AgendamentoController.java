@@ -1,8 +1,6 @@
 package br.com.atacadao.reportsadmin.controller;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,9 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.atacadao.reportsadmin.model.Funcionario;
-import br.com.atacadao.reportsadmin.model.Relatorio;
 import br.com.atacadao.reportsadmin.model.dao.FuncionarioDAO;
-import br.com.atacadao.reportsadmin.model.dao.RelatorioDAO;
 
 
 @Transactional
@@ -27,9 +23,6 @@ public class AgendamentoController {
 
 	@Autowired
 	private FuncionarioDAO funcionarioDAO;
-
-	@Autowired
-	private RelatorioDAO relatorioDAO;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView list() {
@@ -61,7 +54,7 @@ public class AgendamentoController {
 			RedirectAttributes redirectAttributes) {
 
 		Funcionario funcionario = funcionarioDAO.find(id);	
-		
+		 
 		funcionario.setRelatorios(funcionario.filtraRelatoriosSelecionados(selecionados));		
 		funcionarioDAO.update(funcionario);
 		

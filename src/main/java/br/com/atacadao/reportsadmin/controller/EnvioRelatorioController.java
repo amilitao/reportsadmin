@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.com.atacadao.reportsadmin.model.Correio;
+import br.com.atacadao.reportsadmin.model.Email;
 import br.com.atacadao.reportsadmin.model.Funcionario;
 import br.com.atacadao.reportsadmin.model.Relatorio;
 import br.com.atacadao.reportsadmin.model.dao.FuncionarioDAO;
@@ -28,7 +30,7 @@ public class EnvioRelatorioController {
 	private FuncionarioDAO funcionarioDAO;
 	
 	@Autowired
-	private RelatorioDAO relatorioDAO;
+	private Correio correio;
 
 
 	@RequestMapping(method = RequestMethod.GET)
@@ -77,9 +79,11 @@ public class EnvioRelatorioController {
 		
 		Funcionario funcionario = funcionarioDAO.find(idFuncionario);
 		
-		Set<Relatorio> lista = funcionario.filtraRelatoriosSelecionados(selecionados);
+		Set<Relatorio> relatoriosSelecionados = funcionario.filtraRelatoriosSelecionados(selecionados);
 		
-				
+		for(Relatorio relatorio : relatoriosSelecionados) {		
+			correio.envia(new Email(funcionario, relatorio));
+		}				
 
 		return new ModelAndView("redirect:/envio-de-relatorio/" + idFuncionario);
 
