@@ -69,7 +69,7 @@
 					<th class="w3-border">Nome</th>	
 					<th class="w3-border">Servidor</th>
 					<th class="w3-border">Descrição</th>					
-					<th class="w3-border">Tipo</th>		
+					<th class="w3-border w3-center">Tipo</th>				
 					<th class="w3-border w3-center">Gerenciar</th>			
 										
 				</tr>
@@ -79,7 +79,7 @@
 						<td class="w3-border">${relatorio.nome}</td>
 						<td class="w3-border">${relatorio.servidor}</td>
 						<td class="w3-border">${relatorio.descricao}</td>
-						<td class="w3-border">${relatorio.tipoRelatorio}</td>
+						<td class="w3-border w3-center" style="text-transform: lowercase;">${relatorio.tipoRelatorio}</td>
 						<td class="w3-center">
 							<div class="w3-bar">
 								<%-- <a href="${spring:mvcUrl('RC#remove').arg(0,relatorio.id_relatorio).build()}" 

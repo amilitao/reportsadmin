@@ -65,6 +65,8 @@ public class RelatorioController {
 			redirectAttributes.addFlashAttribute("sucesso", "Relatorio atualizado com sucesso");
 		}
 		
+			
+		
 		return new ModelAndView("redirect:/relatorio");
 	}
 

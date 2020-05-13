@@ -144,8 +144,7 @@
 								<td class="w3-border">${relatorio.nome}</td>
 								<td class="w3-border">${relatorio.servidor}</td>
 								<td class="w3-border">${relatorio.tipoRelatorio}</td>	
-								<td
-									class="w3-border w3-center">${relatorio.status}</td>
+								<td class="w3-border w3-center" style="text-transform: lowercase;">${relatorio.status}</td>
 								<td class="w3-border w3-center"><fmt:formatDate
 										pattern="dd/MM/yyyy HH:mm:ss"
 										value="${relatorio.dtAtualizacao.getTime()}" /></td>	

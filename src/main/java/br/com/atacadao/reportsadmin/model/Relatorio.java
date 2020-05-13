@@ -45,8 +45,8 @@ public class Relatorio implements Serializable {
 	@JoinTable(name = "relatorio_grupos", joinColumns = @JoinColumn(name = "relatorio_id"), inverseJoinColumns = @JoinColumn(name = "grupos_id"))
 	private Set<Grupos> grupos;
 	
-	@Enumerated(EnumType.ORDINAL)
-	public StatusRelatorio status;
+	@Enumerated(EnumType.STRING)
+	public StatusRelatorio status = StatusRelatorio.INDISPONIVEL;
 
 	@DateTimeFormat(iso = ISO.DATE)
 	private Calendar dtAtualizacao;
