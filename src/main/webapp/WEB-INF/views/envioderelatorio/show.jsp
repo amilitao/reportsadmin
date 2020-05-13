@@ -143,8 +143,16 @@
 								</td>							
 								<td class="w3-border">${relatorio.nome}</td>
 								<td class="w3-border">${relatorio.servidor}</td>
-								<td class="w3-border">${relatorio.tipoRelatorio}</td>	
-								<td class="w3-border w3-center" style="text-transform: lowercase;">${relatorio.status}</td>
+								<td class="w3-border">${relatorio.tipoRelatorio}</td>
+								
+								<c:if test="${relatorio.status == 'INDISPONIVEL'}">
+									<c:set var="cor" value="red" />
+								</c:if>	
+								<c:if test="${relatorio.status == 'DISPONIVEL'}">
+									<c:set var="cor" value="green" />
+								</c:if>								
+								
+								<td class="w3-border w3-center w3-text-${cor}" style="text-transform: lowercase;">${relatorio.status}</td>
 								<td class="w3-border w3-center"><fmt:formatDate
 										pattern="dd/MM/yyyy HH:mm:ss"
 										value="${relatorio.dtAtualizacao.getTime()}" /></td>	
