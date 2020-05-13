@@ -124,13 +124,7 @@ public class Relatorio implements Serializable {
 		this.dtAtualizacao = dtAtualizacao;
 	}
 
-	
-	
-	
-	
-	
-
-	
+		
 	
 	
 

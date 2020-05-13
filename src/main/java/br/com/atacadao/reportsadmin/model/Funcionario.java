@@ -91,6 +91,24 @@ public class Funcionario implements Serializable {
 		this.grupos = grupos;
 	}
 
+	public Set<Relatorio> filtraRelatoriosSelecionados(String[] selecionados) {
+
+		Set<Relatorio> lista = new HashSet<>();
+		Set<Relatorio> permitidos = listaDeRelatoriosPermitidos();
+
+		if (selecionados != null) {
+			for (String id : selecionados) {
+				for (Relatorio r : permitidos) {
+					if (r.getId().equals(Long.valueOf(id))) {
+						lista.add(r);
+					}
+				}
+			}
+		}
+
+		return lista;
+	}
+
 	public Set<Relatorio> listaDeRelatoriosPermitidos() {
 
 		Set<Relatorio> permitidos = new HashSet<>();

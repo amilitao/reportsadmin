@@ -1,5 +1,7 @@
 package br.com.atacadao.reportsadmin.controller;
 
+import java.util.Set;
+
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.atacadao.reportsadmin.model.Funcionario;
+import br.com.atacadao.reportsadmin.model.Relatorio;
 import br.com.atacadao.reportsadmin.model.dao.FuncionarioDAO;
+import br.com.atacadao.reportsadmin.model.dao.RelatorioDAO;
 
 @Transactional
 @Controller
@@ -22,6 +26,9 @@ public class EnvioRelatorioController {
 
 	@Autowired
 	private FuncionarioDAO funcionarioDAO;
+	
+	@Autowired
+	private RelatorioDAO relatorioDAO;
 
 
 	@RequestMapping(method = RequestMethod.GET)
@@ -53,11 +60,28 @@ public class EnvioRelatorioController {
 	}
 
 	@RequestMapping("/enviar")
-	public ModelAndView enviarEmail(@RequestParam long id_funcionario,
+	public ModelAndView enviarEmail(@RequestParam Long idFuncionario,
 			@RequestParam(name = "selecionados", required = false) String[] selecionados,
 			RedirectAttributes redirectAttributes) {
+		
+		/*
+		 * Set<Relatorio> relatoriosSelecionados = new HashSet<>();
+		 * 
+		 * if (relatoriosSelecionados != null) {
+		 * 
+		 * for (String idRelatorio : selecionados) {
+		 * relatoriosSelecionados.add(relatorioDAO.find(Long.valueOf(idRelatorio))); }
+		 * 
+		 * }
+		 */		
+		
+		Funcionario funcionario = funcionarioDAO.find(idFuncionario);
+		
+		Set<Relatorio> lista = funcionario.filtraRelatoriosSelecionados(selecionados);
+		
+				
 
-		return new ModelAndView("redirect:/envio-de-relatorio/" + id_funcionario);
+		return new ModelAndView("redirect:/envio-de-relatorio/" + idFuncionario);
 
 	}
 

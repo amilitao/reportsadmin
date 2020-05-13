@@ -84,8 +84,7 @@
 
 	<div class="w3-container">
 
-		<div
-				class="w3-panel w3-bar w3-leftbar w3-text-dark-grey w3-border-red w3-pale-red">
+		<div class="w3-panel w3-bar w3-leftbar w3-text-dark-grey w3-border-red w3-pale-red">
 			<h4 class="w3-bar-item">
 				<i class="fa fa-envelope-o"></i><b> Envio de relatórios</b>
 			</h4>
@@ -103,7 +102,10 @@
 				<div class="w3-bar">					
 					<div class="w3-bar-item">
 						<p><b>DESTINATÁRIO:</b></p>
-					</div>				
+					</div>	
+					
+					<input type="hidden" value="${funcionario.id}" name="idFuncionario">
+								
 					<div class="w3-bar-item">
 						<label class="w3-input w3-border w3-white" style="width: 400px">${funcionario.email}</label>
 					</div>

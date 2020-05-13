@@ -60,18 +60,9 @@ public class AgendamentoController {
 			@RequestParam(name = "selecionados", required = false) String[] selecionados,
 			RedirectAttributes redirectAttributes) {
 
-		Funcionario funcionario = funcionarioDAO.find(id);
-		Set<Relatorio> relatoriosAgendados = new HashSet<>();
-
-		if (selecionados != null) {			
-
-			for (String rel : selecionados) {
-				relatoriosAgendados.add(relatorioDAO.find(Long.valueOf(rel)));
-			}			
-
-		}
+		Funcionario funcionario = funcionarioDAO.find(id);	
 		
-		funcionario.setRelatorios(relatoriosAgendados);		
+		funcionario.setRelatorios(funcionario.filtraRelatoriosSelecionados(selecionados));		
 		funcionarioDAO.update(funcionario);
 		
 		redirectAttributes.addFlashAttribute("sucesso", "Relatórios agendados atualizados com sucesso!");
