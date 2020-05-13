@@ -146,13 +146,13 @@
 								<td class="w3-border">${relatorio.tipoRelatorio}</td>
 								
 								<c:if test="${relatorio.status == 'INDISPONIVEL'}">
-									<c:set var="cor" value="red" />
+									<c:set var="corDeStatus" value="red" />
 								</c:if>	
 								<c:if test="${relatorio.status == 'DISPONIVEL'}">
-									<c:set var="cor" value="green" />
+									<c:set var="corDeStatus" value="green" />
 								</c:if>								
 								
-								<td class="w3-border w3-center w3-text-${cor}" style="text-transform: lowercase;">${relatorio.status}</td>
+								<td class="w3-border w3-center w3-text-${corDeStatus}" style="text-transform: lowercase;">${relatorio.status}</td>
 								<td class="w3-border w3-center"><fmt:formatDate
 										pattern="dd/MM/yyyy HH:mm:ss"
 										value="${relatorio.dtAtualizacao.getTime()}" /></td>	
