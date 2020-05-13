@@ -1,8 +1,5 @@
 package br.com.atacadao.reportsadmin.controller;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.atacadao.reportsadmin.model.Funcionario;
-import br.com.atacadao.reportsadmin.model.Grupos;
-import br.com.atacadao.reportsadmin.model.Relatorio;
 import br.com.atacadao.reportsadmin.model.dao.FuncionarioDAO;
 
 @Transactional
@@ -45,7 +40,7 @@ public class EnvioRelatorioController {
 		Funcionario funcionario = funcionarioDAO.find(id);
 
 		modelAndView.addObject("funcionario", funcionario);
-		modelAndView.addObject("permitidos", listaDeRelatoriosPermitidos(funcionario.getGrupos()));
+		modelAndView.addObject("relatoriosPermitidos", funcionario.listaDeRelatoriosPermitidos());
 
 		return modelAndView;
 	}
@@ -70,21 +65,6 @@ public class EnvioRelatorioController {
 	public void viewPDF(@PathVariable("id_relatorio") long id_relatorio, HttpServletResponse response) {
 
 	}
-
-	public Set<Relatorio> listaDeRelatoriosPermitidos(Set<Grupos> lista) {
-
-		Set<Relatorio> permitidos = new HashSet<>();
-		if (!lista.isEmpty()) {
-			for (Grupos grupos : lista) {
-				if (!grupos.getRelatorios().isEmpty()) {
-					for (Relatorio relatorio : grupos.getRelatorios()) {
-						permitidos.add(relatorio);
-					}
-				}
-			}
-		}
-		return permitidos;
-
-	}
+	
 
 }

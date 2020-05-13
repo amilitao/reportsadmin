@@ -90,7 +90,7 @@
 							<th class="w3-border">Tipo de Relatório</th>						
 						</tr>
 
-						<c:forEach var="relatorio" items="${permitidos}">
+						<c:forEach var="relatorio" items="${relatoriosPermitidos}">
 
 							<tr>
 								<td class="w3-border" style="width:70px"><input type="checkbox" class="w3-check"

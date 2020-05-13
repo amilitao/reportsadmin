@@ -133,7 +133,7 @@
 										
 						</tr>
 
-						<c:forEach var="relatorio" items="${permitidos}">
+						<c:forEach var="relatorio" items="${relatoriosPermitidos}">
 
 							<tr class="item">							
 								<td class="w3-border" style="width: 70px">
