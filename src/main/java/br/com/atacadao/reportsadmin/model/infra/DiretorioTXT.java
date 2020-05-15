@@ -1,12 +1,10 @@
 package br.com.atacadao.reportsadmin.model.infra;
 
-import java.io.File;
+import br.com.atacadao.reportsadmin.model.PathDiretorioEnum;
 
 public class DiretorioTXT implements Diretorio{
 	
-	private String path = "c:" + File.separator + "home" + File.separator + "usuario" + File.separator
-			+ "projetos" + File.separator + "reportsadmin" + File.separator + "repositorio" 
-			+ File.separator + "txt" + File.separator;
+	private String path = PathDiretorioEnum.DIR_TXT.getPath();
 
 	@Override
 	public String getPath() {		

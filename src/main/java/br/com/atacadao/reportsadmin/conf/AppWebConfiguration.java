@@ -1,6 +1,5 @@
 package br.com.atacadao.reportsadmin.conf;
 
-import java.io.File;
 import java.util.Properties;
 
 import org.springframework.context.annotation.Bean;
@@ -13,6 +12,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import br.com.atacadao.reportsadmin.model.PathDiretorioEnum;
 import br.com.atacadao.reportsadmin.model.jsch.Transfer;
 
 @Configuration
@@ -69,14 +69,10 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter{
 	}
 	
 	@Bean
-	public Transfer getTransfer() {
-		
-		String destino = "c:" + File.separator + "home" + File.separator 
-				+ "usuario" + File.separator + "projetos" + File.separator 
-				+ "reportsadmin" + File.separator + "recebidos" + File.separator;
+	public Transfer getTransfer() {	
 		
 		Transfer transfer = new Transfer();
-		transfer.setPathDestino(destino);
+		transfer.setPathDestino(PathDiretorioEnum.DIR_RECEBIDOS.getPath());
 		transfer.setLogin("amilitao");
 		transfer.setPassword("123");
 		
