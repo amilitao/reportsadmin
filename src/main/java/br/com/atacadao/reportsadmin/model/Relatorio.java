@@ -1,5 +1,6 @@
 package br.com.atacadao.reportsadmin.model;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Set;
@@ -127,8 +128,14 @@ public class Relatorio implements Serializable {
 	public String getNomeArquivo() {
 		
 		return this.nome + ".f" + 
-				this.servidor.getNumero() + "." + 
+				this.servidor.getNumero() + 
 					this.getTipoRelatorio().getExtensao();
+	}
+
+	public File getFile() {		
+		return new File(
+				this.tipoRelatorio.getDiretorio().getPath() 
+				+ this.getNomeArquivo());
 	}
 	
 	

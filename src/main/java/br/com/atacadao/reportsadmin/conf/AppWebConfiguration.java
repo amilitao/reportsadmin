@@ -37,17 +37,18 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter{
 	public JavaMailSender getMailSender() {
 		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 		
-		mailSender.setHost("10.113.80.147");
-		mailSender.setPort(25);
+		/*
+		 * mailSender.setHost("10.113.80.147"); mailSender.setPort(25);
+		 * 
+		 * Properties mailProperties = new Properties();
+		 * mailProperties.put("mail.smtp.auth", false);
+		 * mailProperties.put("mail.smtp.starttls.enable", false);
+		 * mailProperties.put("mail.debug", "false");// Prints out everything on screen
+		 * 
+		 * mailSender.setJavaMailProperties(mailProperties);
+		 */
 
-		Properties mailProperties = new Properties();
-		mailProperties.put("mail.smtp.auth", false);
-		mailProperties.put("mail.smtp.starttls.enable", false);
-		mailProperties.put("mail.debug", "false");// Prints out everything on screen
-
-		mailSender.setJavaMailProperties(mailProperties);
-
-		/*// Using gmail		
+		// Using gmail		
 		  mailSender.setHost("smtp.gmail.com"); mailSender.setPort(587);
 		  mailSender.setUsername("adrianomilitao@gmail.com");
 		  mailSender.setPassword("militao150506");
@@ -58,7 +59,7 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter{
 		  javaMailProperties.put("mail.transport.protocol", "smtp");
 		  javaMailProperties.put("mail.debug", "true");//Prints out everything on  screen
 		  
-		  mailSender.setJavaMailProperties(javaMailProperties);*/
+		  mailSender.setJavaMailProperties(javaMailProperties);
 		 
 
 		return mailSender;

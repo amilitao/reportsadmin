@@ -18,7 +18,7 @@ public class Email {
 		this.subject = relatorio.getNomeArquivo() + " - " + relatorio.getDescricao();
 		this.content = "Segue anexo relatorio " + relatorio.getNomeArquivo();
 		
-		File anexo = new File(relatorio.getTipoRelatorio().getDiretorio().getPath());		
+		File anexo = relatorio.getFile();		
 		
 		if (anexo != null) {
 			this.setAttachment(anexo);
