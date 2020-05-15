@@ -17,6 +17,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.atacadao.reportsadmin.model.Funcionario;
 import br.com.atacadao.reportsadmin.model.Relatorio;
 import br.com.atacadao.reportsadmin.model.dao.FuncionarioDAO;
+import br.com.atacadao.reportsadmin.model.dao.RelatorioDAO;
+import br.com.atacadao.reportsadmin.model.jsch.Transfer;
 import br.com.atacadao.reportsadmin.model.mail.Correio;
 import br.com.atacadao.reportsadmin.model.mail.Email;
 
@@ -29,7 +31,13 @@ public class EnvioRelatorioController {
 	private FuncionarioDAO funcionarioDAO;
 	
 	@Autowired
+	private RelatorioDAO relatorioDAO;
+	
+	@Autowired
 	private Correio correio;
+	
+	@Autowired
+	private Transfer transfer;
 
 
 	@RequestMapping(method = RequestMethod.GET)
@@ -56,7 +64,12 @@ public class EnvioRelatorioController {
 	@RequestMapping("atualiza/rel/{id_relatorio}/func/{id_funcionario}")
 	public ModelAndView download(@PathVariable("id_relatorio") Long id_relatorio,
 			@PathVariable("id_funcionario") Long id_funcionario, RedirectAttributes redirectAttributes) {
-
+			
+		Relatorio relatorio = relatorioDAO.find(id_relatorio);
+		
+		transfer.buscar(relatorio);
+			
+		
 		return new ModelAndView("redirect:/envio-de-relatorio/" + id_funcionario);
 	}
 
