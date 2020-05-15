@@ -124,6 +124,16 @@ public class Relatorio implements Serializable {
 		this.dtAtualizacao = dtAtualizacao;
 	}
 
+	public String getNomeArquivo() {
+		
+		return this.nome + ".f" + 
+				this.servidor.getNumero() + "." + 
+					this.getTipoRelatorio().getExtensao();
+	}
+	
+	
+
+
 		
 	
 	

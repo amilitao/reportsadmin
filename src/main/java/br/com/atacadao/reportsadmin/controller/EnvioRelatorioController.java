@@ -14,12 +14,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.com.atacadao.reportsadmin.model.Correio;
-import br.com.atacadao.reportsadmin.model.Email;
 import br.com.atacadao.reportsadmin.model.Funcionario;
 import br.com.atacadao.reportsadmin.model.Relatorio;
 import br.com.atacadao.reportsadmin.model.dao.FuncionarioDAO;
-import br.com.atacadao.reportsadmin.model.dao.RelatorioDAO;
+import br.com.atacadao.reportsadmin.model.mail.Correio;
+import br.com.atacadao.reportsadmin.model.mail.Email;
 
 @Transactional
 @Controller
