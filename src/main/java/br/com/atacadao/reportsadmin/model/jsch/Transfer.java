@@ -1,6 +1,7 @@
 package br.com.atacadao.reportsadmin.model.jsch;
 
 import br.com.atacadao.reportsadmin.model.Relatorio;
+import br.com.atacadao.reportsadmin.model.infra.DiretorioRecebidos;
 
 public class Transfer {	
 	
@@ -32,6 +33,8 @@ public class Transfer {
 				this.password);
 
 		sftp.transfere(dados);
+		
+		DiretorioRecebidos.renomearArquivos();
 		
 		
 	}

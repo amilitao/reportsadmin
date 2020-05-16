@@ -134,8 +134,12 @@ public class Relatorio implements Serializable {
 
 	public File getFile() {		
 		return new File(
-				this.tipoRelatorio.getDiretorio().getPath() 
+				this.tipoRelatorio.getRepositorio().getPath() 
 				+ this.getNomeArquivo());
+	}
+
+	public boolean atualiza() {		
+		return this.tipoRelatorio.getRepositorio().atualiza(this);		
 	}
 	
 	

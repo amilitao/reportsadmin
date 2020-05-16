@@ -1,20 +1,20 @@
 package br.com.atacadao.reportsadmin.model;
 
-import br.com.atacadao.reportsadmin.model.infra.Diretorio;
 import br.com.atacadao.reportsadmin.model.infra.DiretorioCSV;
 import br.com.atacadao.reportsadmin.model.infra.DiretorioPDF;
 import br.com.atacadao.reportsadmin.model.infra.DiretorioTXT;
+import br.com.atacadao.reportsadmin.model.infra.Repositorio;
 
 public enum TipoRelatorio {
 
 	TXT("", new DiretorioTXT()), PDF(".pdf", new DiretorioPDF()), CSV(".csv", new DiretorioCSV());
 	
 	private final String extensao;
-	private final Diretorio diretorio;
+	private final Repositorio repositorio;
 	
-	TipoRelatorio(String extensao, Diretorio diretorio) {
+	TipoRelatorio(String extensao, Repositorio repositorio) {
 		this.extensao = extensao;		
-		this.diretorio = diretorio;
+		this.repositorio = repositorio;
 	
 	}
 
@@ -22,8 +22,8 @@ public enum TipoRelatorio {
 		return extensao;
 	}
 
-	public Diretorio getDiretorio() {
-		return diretorio;
+	public Repositorio getRepositorio() {
+		return repositorio;
 	}	
 
 	

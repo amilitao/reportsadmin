@@ -1,6 +1,8 @@
 package br.com.atacadao.reportsadmin.model.infra;
 
-public class DiretorioCSV implements Diretorio{
+import br.com.atacadao.reportsadmin.model.Relatorio;
+
+public class DiretorioCSV implements Repositorio{
 
 	@Override
 	public String getPath() {
@@ -8,4 +10,11 @@ public class DiretorioCSV implements Diretorio{
 		return null;
 	}
 
+	@Override
+	public boolean atualiza(Relatorio relatorio) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	
 }

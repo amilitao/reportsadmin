@@ -68,6 +68,12 @@ public class EnvioRelatorioController {
 		Relatorio relatorio = relatorioDAO.find(id_relatorio);
 		
 		transfer.buscar(relatorio);
+		
+		if(relatorio.atualiza()) {
+			System.out.println("Atualizado com sucesso");
+		}else {
+			System.out.println("Não atualizado");
+		}
 			
 		
 		return new ModelAndView("redirect:/envio-de-relatorio/" + id_funcionario);
