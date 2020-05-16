@@ -1,5 +1,7 @@
 package br.com.atacadao.reportsadmin.model.infra;
 
+import java.io.File;
+
 import br.com.atacadao.reportsadmin.model.PathDiretorioEnum;
 import br.com.atacadao.reportsadmin.model.Relatorio;
 
@@ -20,6 +22,13 @@ public class DiretorioTXT implements Repositorio{
 		//se nao encontrar retorna falso
 		
 		return false;
+		
+	}
+
+	@Override
+	public void adiciona(File file) {
+		
+		//move o arquivo do diretorio recebidos para o diretorio TXT
 		
 	}
 	

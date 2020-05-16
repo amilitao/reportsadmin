@@ -8,6 +8,7 @@ import br.com.atacadao.reportsadmin.model.TipoRelatorio;
 
 public class PadronizadorDeNomeDeRelatorio {
 	
+	
 	public File executa(File arquivo) {
 
 		String path = "";
@@ -49,6 +50,24 @@ public class PadronizadorDeNomeDeRelatorio {
 
 		return new File(path);
 
+	}
+
+	public TipoRelatorio identificaTipo(File arquivo) {
+		
+		String fileName = arquivo.getName();
+		String ext = fileName.substring(fileName.length() - 4, fileName.length());
+		
+		if (ext.equals(TipoRelatorio.PDF.getExtensao())) {
+			return TipoRelatorio.PDF;
+
+		} else if (ext.equals(TipoRelatorio.CSV.getExtensao())) {
+			return TipoRelatorio.CSV;
+
+		} else {
+			return TipoRelatorio.TXT;
+
+		}
+		
 	}
 
 }

@@ -9,6 +9,7 @@ public class Transfer {
 	private String password;
 	private String pathDestino;	
 	private Sftp sftp = new Sftp();
+	private DiretorioRecebidos diretorio = new DiretorioRecebidos();
 	
 	
 	public void setLogin(String login) {
@@ -34,7 +35,7 @@ public class Transfer {
 
 		sftp.transfere(dados);
 		
-		DiretorioRecebidos.renomearArquivos();
+		diretorio.renomearArquivos();
 		
 		
 	}
