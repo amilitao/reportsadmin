@@ -17,18 +17,12 @@ public class ConverterUtil {
 		this.converter = converter;
 	}
 
-	public void converteTxtParaPdf(File arquivo, int tamanhoFonte) {
+	public void converteTxtParaPdf(File arquivo, int tamanhoFonte) throws DocumentException, IOException {
 
-		log.info("Convertendo relatorio {}", arquivo.getName());
+		log.info("Convertendo relatorio {}", arquivo.getName());		
 
-		try {
+		converter.toPdf(arquivo, tamanhoFonte);
 
-			converter.toPdf(arquivo, tamanhoFonte);
-
-		} catch (DocumentException | IOException e) {
-
-			log.error(e.getMessage());
-		}
 
 	}
 

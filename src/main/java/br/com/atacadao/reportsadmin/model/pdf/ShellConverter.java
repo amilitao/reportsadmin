@@ -11,19 +11,20 @@ import java.util.ArrayList;
 import com.itextpdf.text.DocumentException;
 
 import br.com.atacadao.reportsadmin.model.PathDiretorioEnum;
+import br.com.atacadao.reportsadmin.model.TipoRelatorio;
 
 public class ShellConverter implements Converter {
 	
 
 	@Override
 	public void toPdf(File arquivo, int tamanhoFonte) throws DocumentException, IOException {
-	
-		File pdf = new File(PathDiretorioEnum.DIR_PDF.getPath() 
-				+ arquivo.getName() + ".pdf");
-		
+				
 		if (arquivo.length() == 0) {
-			System.out.println("Arquivo txt sem conteudo!");
+			throw new DocumentException("Arquivo sem conteudo");
 		}
+		
+		File pdf = new File(PathDiretorioEnum.DIR_PDF.getPath() 
+				+ arquivo.getName() + TipoRelatorio.PDF.getExtensao());
 
 		final ArrayList<String> commands = new ArrayList<String>();
 

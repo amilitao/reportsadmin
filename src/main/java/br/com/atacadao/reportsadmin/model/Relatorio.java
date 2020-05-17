@@ -149,10 +149,7 @@ public class Relatorio implements Serializable {
 				this.tipoRelatorio.getRepositorio().getPath() 
 				+ this.getNomeArquivo());
 	}
-
-	public boolean atualiza() {		
-		return this.tipoRelatorio.getRepositorio().atualiza(this);		
-	}
+	
 	
 	
 

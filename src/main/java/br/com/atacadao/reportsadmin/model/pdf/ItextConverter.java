@@ -12,6 +12,7 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import br.com.atacadao.reportsadmin.model.PathDiretorioEnum;
+import br.com.atacadao.reportsadmin.model.TipoRelatorio;
 
 public class ItextConverter implements Converter {
 
@@ -19,13 +20,14 @@ public class ItextConverter implements Converter {
 	public void toPdf(File arquivo, int tamanhoFonte) throws DocumentException, IOException {
 
 		LeitorDeArquivo leitor = new LeitorDeArquivo(arquivo);
-
-		File pdf = new File(PathDiretorioEnum.DIR_PDF.getPath() 
-				+ arquivo.getName() + ".pdf");
-
+	
 		if (leitor.getLinhas().isEmpty()) {
-			System.out.println("Arquivo sem conteudo");
+			throw new DocumentException("Arquivo sem conteudo");
 		}
+		
+		File pdf = new File(PathDiretorioEnum.DIR_PDF.getPath() 
+				+ arquivo.getName() + TipoRelatorio.PDF.getExtensao());
+
 
 		Document document = new Document(PageSize.A4.rotate());
 

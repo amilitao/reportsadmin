@@ -1,5 +1,6 @@
 package br.com.atacadao.reportsadmin.controller;
 
+import java.util.Calendar;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.atacadao.reportsadmin.model.Funcionario;
 import br.com.atacadao.reportsadmin.model.Relatorio;
+import br.com.atacadao.reportsadmin.model.StatusRelatorio;
 import br.com.atacadao.reportsadmin.model.dao.FuncionarioDAO;
 import br.com.atacadao.reportsadmin.model.dao.RelatorioDAO;
 import br.com.atacadao.reportsadmin.model.infra.GerenciadorDeArquivos;
@@ -65,15 +67,17 @@ public class EnvioRelatorioController {
 	public ModelAndView download(@PathVariable("id_relatorio") Long id_relatorio,
 			@PathVariable("id_funcionario") Long id_funcionario, RedirectAttributes redirectAttributes) {
 			
-		Relatorio relatorio = relatorioDAO.find(id_relatorio);
-		
-		gerenciadorDeArquivos.atualiza(relatorio);
-		
-		//transfer.buscar(relatorio);
-		
-		if(relatorio.atualiza()) {
+		Relatorio relatorio = relatorioDAO.find(id_relatorio);		
+			
+		if(gerenciadorDeArquivos.atualiza(relatorio)) {
+			
+			relatorio.setStatus(StatusRelatorio.DISPONIVEL);
+			relatorio.setDtAtualizacao(Calendar.getInstance());
+			
 			System.out.println("Atualizado com sucesso");
 		}else {
+			
+			relatorio.setStatus(StatusRelatorio.INDISPONIVEL);
 			System.out.println("Não atualizado");
 		}
 			

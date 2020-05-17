@@ -17,7 +17,7 @@ public class GerenciadorDeArquivos {
 	@Autowired
 	private Transfer transfer;
 
-	public void atualiza(Relatorio relatorio) {
+	public boolean atualiza(Relatorio relatorio) {
 
 		try {
 
@@ -28,11 +28,13 @@ public class GerenciadorDeArquivos {
 			if(relatorio.getTipoRelatorio().equals(TipoRelatorio.PDF)) {
 				ConversorDeRelatorio conversor = new ConversorDeRelatorio();
 				conversor.converteTxtParaPdf(relatorio);
-			}			
+			}	
+			
+			return true;
 
 		} catch (Exception ex) {
-			// gravar mensagem no log
 			System.out.println(ex.getMessage());
+			return false;
 		}
 
 	}
