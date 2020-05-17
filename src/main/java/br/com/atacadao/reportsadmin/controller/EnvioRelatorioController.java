@@ -18,7 +18,7 @@ import br.com.atacadao.reportsadmin.model.Funcionario;
 import br.com.atacadao.reportsadmin.model.Relatorio;
 import br.com.atacadao.reportsadmin.model.dao.FuncionarioDAO;
 import br.com.atacadao.reportsadmin.model.dao.RelatorioDAO;
-import br.com.atacadao.reportsadmin.model.jsch.Transfer;
+import br.com.atacadao.reportsadmin.model.infra.GerenciadorDeArquivos;
 import br.com.atacadao.reportsadmin.model.mail.Correio;
 import br.com.atacadao.reportsadmin.model.mail.Email;
 
@@ -37,7 +37,7 @@ public class EnvioRelatorioController {
 	private Correio correio;
 	
 	@Autowired
-	private Transfer transfer;
+	private GerenciadorDeArquivos gerenciadorDeArquivos;
 
 
 	@RequestMapping(method = RequestMethod.GET)
@@ -67,7 +67,9 @@ public class EnvioRelatorioController {
 			
 		Relatorio relatorio = relatorioDAO.find(id_relatorio);
 		
-		transfer.buscar(relatorio);
+		gerenciadorDeArquivos.atualiza(relatorio);
+		
+		//transfer.buscar(relatorio);
 		
 		if(relatorio.atualiza()) {
 			System.out.println("Atualizado com sucesso");

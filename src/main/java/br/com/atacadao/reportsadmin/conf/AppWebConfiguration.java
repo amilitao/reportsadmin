@@ -74,7 +74,7 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter{
 		Transfer transfer = new Transfer();
 		transfer.setPathDestino(PathDiretorioEnum.DIR_RECEBIDOS.getPath());
 		transfer.setLogin("amilitao");
-		transfer.setPassword("123");
+		transfer.setPassword("springMVC@20");
 		
 		return transfer;
 		

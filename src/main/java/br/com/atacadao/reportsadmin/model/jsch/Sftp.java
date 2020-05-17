@@ -22,7 +22,7 @@ public class Sftp {
 		this.channelSftp = new ChannelSftp();
 	}
 
-	public void transfere(DadosParaTransferencia dados) {
+	public void transfere(DadosParaTransferencia dados) throws Exception {
 
 		Session jschSession;
 
@@ -44,8 +44,10 @@ public class Sftp {
 
 			channelSftp.get(dados.getAbsoluteRemoteFile() + "*", dados.getAbsoluteLocalFile() + File.separator);
 
-		} catch (JSchException | SftpException ex) {
-			System.out.println("Erro ao buscar arquivo");
+		} catch (JSchException | SftpException ex) {			
+				throw new Exception("Erro ao transferir arquivo: " + ex.getMessage() 
+						+ " | Dados de transferencia: Arquivo: " + dados.getAbsoluteRemoteFile()
+						+ " - Servidor: " + dados.getHost());	
 		} finally {
 			channelSftp.exit();
 		}

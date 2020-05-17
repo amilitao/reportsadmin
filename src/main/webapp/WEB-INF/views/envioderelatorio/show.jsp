@@ -159,7 +159,7 @@
 										pattern="dd/MM/yyyy HH:mm:ss"
 										value="${relatorio.dtAtualizacao.getTime()}" /></td>	
 								<td class="w3-border w3-center">
-									<a href="${spring:mvcUrl('ERC#download').arg(0,funcionario.id).arg(1, relatorio.id).build()}" onclick="document.getElementById('spin').style.display='block'" >
+									<a href="${spring:mvcUrl('ERC#download').arg(0,relatorio.id).arg(1, funcionario.id).build()}" onclick="document.getElementById('spin').style.display='block'" >
 								<i class="fa fa-refresh" style="font-size: 24px"></i>
 								</a>
 								</td>								
