@@ -5,7 +5,7 @@ import java.io.File;
 import br.com.atacadao.reportsadmin.model.PathDiretorioEnum;
 import br.com.atacadao.reportsadmin.model.Relatorio;
 
-public class DiretorioTXT implements Repositorio{
+public class RepositorioTXT implements Repositorio{
 	
 	private String path = PathDiretorioEnum.DIR_TXT.getPath();
 

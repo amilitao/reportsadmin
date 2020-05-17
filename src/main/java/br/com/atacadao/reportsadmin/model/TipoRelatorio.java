@@ -1,13 +1,13 @@
 package br.com.atacadao.reportsadmin.model;
 
-import br.com.atacadao.reportsadmin.model.infra.DiretorioCSV;
-import br.com.atacadao.reportsadmin.model.infra.DiretorioPDF;
-import br.com.atacadao.reportsadmin.model.infra.DiretorioTXT;
+import br.com.atacadao.reportsadmin.model.infra.RepositorioCSV;
+import br.com.atacadao.reportsadmin.model.infra.RepositorioPDF;
+import br.com.atacadao.reportsadmin.model.infra.RepositorioTXT;
 import br.com.atacadao.reportsadmin.model.infra.Repositorio;
 
 public enum TipoRelatorio {
 
-	TXT("", new DiretorioTXT()), PDF(".pdf", new DiretorioPDF()), CSV(".csv", new DiretorioCSV());
+	TXT("", new RepositorioTXT()), PDF(".pdf", new RepositorioPDF()), CSV(".csv", new RepositorioCSV());
 	
 	private final String extensao;
 	private final Repositorio repositorio;

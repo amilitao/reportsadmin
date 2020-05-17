@@ -4,7 +4,7 @@ import java.io.File;
 
 import br.com.atacadao.reportsadmin.model.Relatorio;
 
-public class DiretorioPDF implements Repositorio{
+public class RepositorioCSV implements Repositorio{
 
 	@Override
 	public String getPath() {
@@ -25,5 +25,4 @@ public class DiretorioPDF implements Repositorio{
 	}
 
 	
-
 }
