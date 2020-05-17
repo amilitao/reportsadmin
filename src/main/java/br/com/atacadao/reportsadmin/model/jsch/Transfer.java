@@ -21,7 +21,7 @@ public class Transfer {
 		this.pathDestino = pathDestino;
 	}
 
-	public void transfere(Relatorio relatorio) throws Exception {
+	public void recebe(Relatorio relatorio) throws Exception {
 		
 		String arquivoProcurado = relatorio.getNome() + ".f" + relatorio.getServidor().getNumero();
 

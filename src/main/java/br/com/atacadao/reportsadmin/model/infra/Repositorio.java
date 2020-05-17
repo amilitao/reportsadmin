@@ -10,6 +10,6 @@ public interface Repositorio {
 
 	boolean atualiza(Relatorio relatorio);
 
-	void adiciona(File file);
+	void adiciona(File file,  String novoNome);
 
 }

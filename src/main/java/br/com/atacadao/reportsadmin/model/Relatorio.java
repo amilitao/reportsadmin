@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -38,6 +39,9 @@ public class Relatorio implements Serializable {
 	
 	@Enumerated(EnumType.ORDINAL)
 	private TipoRelatorio tipoRelatorio;
+	
+	@Column(columnDefinition = "int default 7")
+	private int tamanhoFonte;
 	
 	@ManyToMany(mappedBy = "relatorios")
 	private Set<Funcionario> funcionarios;
@@ -107,6 +111,14 @@ public class Relatorio implements Serializable {
 
 	public void setTipoRelatorio(TipoRelatorio tipoRelatorio) {
 		this.tipoRelatorio = tipoRelatorio;
+	}	
+	
+	public int getTamanhoFonte() {
+		return tamanhoFonte;
+	}
+
+	public void setTamanhoFonte(int tamanhoFonte) {
+		this.tamanhoFonte = tamanhoFonte;
 	}
 
 	public StatusRelatorio getStatus() {

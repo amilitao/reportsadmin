@@ -2,9 +2,13 @@ package br.com.atacadao.reportsadmin.model.infra;
 
 import java.io.File;
 
+import br.com.atacadao.reportsadmin.model.PathDiretorioEnum;
 import br.com.atacadao.reportsadmin.model.Relatorio;
+import br.com.atacadao.reportsadmin.model.TipoRelatorio;
 
 public class RepositorioCSV implements Repositorio{
+	
+	private String path = PathDiretorioEnum.DIR_CSV.getPath();
 
 	@Override
 	public String getPath() {
@@ -19,8 +23,9 @@ public class RepositorioCSV implements Repositorio{
 	}
 
 	@Override
-	public void adiciona(File file) {
-		// TODO Auto-generated method stub
+	public void adiciona(File file, String novoNome) {
+		
+		file.renameTo(new File(path + novoNome + TipoRelatorio.CSV.getExtensao()));
 		
 	}
 
