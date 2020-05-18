@@ -11,6 +11,7 @@ import com.itextpdf.text.DocumentException;
 public class ConverterUtil {
 
 	private static final Logger log = LoggerFactory.getLogger(ConverterUtil.class);
+	
 	private Converter converter;
 
 	public ConverterUtil(Converter converter) {
@@ -22,6 +23,8 @@ public class ConverterUtil {
 		log.info("Convertendo relatorio {}", arquivo.getName());		
 
 		converter.toPdf(arquivo, tamanhoFonte);
+		
+		log.info("Relatorio {} convertido com sucesso!", arquivo.getName());
 
 
 	}

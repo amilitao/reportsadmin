@@ -72,15 +72,13 @@ public class EnvioRelatorioController {
 		if(gerenciadorDeArquivos.atualiza(relatorio)) {
 			
 			relatorio.setStatus(StatusRelatorio.DISPONIVEL);
-			relatorio.setDtAtualizacao(Calendar.getInstance());
+			relatorio.setDtAtualizacao(Calendar.getInstance());			
 			
-			System.out.println("Atualizado com sucesso");
 		}else {
 			
 			relatorio.setStatus(StatusRelatorio.INDISPONIVEL);
-			System.out.println("Não atualizado");
-		}
 			
+		}			
 		
 		return new ModelAndView("redirect:/envio-de-relatorio/" + id_funcionario);
 	}

@@ -1,7 +1,7 @@
 package br.com.atacadao.reportsadmin.model.pdf;
 
 import java.io.File;
-import java.io.IOException;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -16,18 +16,14 @@ public class LeitorDeArquivo {
 
 	}
 
-	public List<String> getLinhas() {
+	public List<String> getLinhas() throws FileNotFoundException {
 
-		try (Scanner scan = new Scanner(arquivo)) {
+		Scanner scan = new Scanner(arquivo);
 
-			while (scan.hasNextLine()) {
+		while (scan.hasNextLine()) {
 
-				linhas.add(scan.nextLine());
+			linhas.add(scan.nextLine());
 
-			}
-
-		} catch (IOException e) {
-			e.printStackTrace();
 		}
 
 		return this.linhas;

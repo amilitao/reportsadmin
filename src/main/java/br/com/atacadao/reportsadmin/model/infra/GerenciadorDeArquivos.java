@@ -19,23 +19,21 @@ public class GerenciadorDeArquivos {
 
 	public boolean atualiza(Relatorio relatorio) {
 
-		try {
+		transfer.recebe(relatorio);
 
-			transfer.recebe(relatorio);
-
-			moveRecebidos();			
-			
-			if(relatorio.getTipoRelatorio().equals(TipoRelatorio.PDF)) {
-				ConversorDeRelatorio conversor = new ConversorDeRelatorio();
-				conversor.converteTxtParaPdf(relatorio);
-			}	
-			
-			return true;
-
-		} catch (Exception ex) {
-			System.out.println(ex.getMessage());
-			return false;
+		moveRecebidos();
+		
+		if (relatorio.getTipoRelatorio().equals(TipoRelatorio.PDF)) {
+			ConversorDeRelatorio conversor = new ConversorDeRelatorio();
+			conversor.converteTxtParaPdf(relatorio);
 		}
+
+		if (relatorio.getTipoRelatorio().getRepositorio().ehDisponivel(relatorio)) {			
+
+			return true;
+		}
+
+		return false;
 
 	}
 
@@ -66,12 +64,12 @@ public class GerenciadorDeArquivos {
 		}
 
 	}
-	
+
 	private String identificaNomeRelatorio(File file) {
-		
+
 		String numero;
 		String fileName = file.getName();
-		String nome = fileName.substring(0, fileName.indexOf("."));		
+		String nome = fileName.substring(0, fileName.indexOf("."));
 
 		if (fileName.contains("f")) {
 			numero = fileName.substring(fileName.indexOf("f") + 1, fileName.indexOf("f") + 4);

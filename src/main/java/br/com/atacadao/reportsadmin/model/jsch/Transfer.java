@@ -1,9 +1,14 @@
 package br.com.atacadao.reportsadmin.model.jsch;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import br.com.atacadao.reportsadmin.model.Relatorio;
 
 public class Transfer {
 
+	private static final Logger log = LoggerFactory.getLogger(Transfer.class);
+	
 	private String login;
 	private String password;
 	private String pathDestino;
@@ -21,7 +26,7 @@ public class Transfer {
 		this.pathDestino = pathDestino;
 	}
 
-	public void recebe(Relatorio relatorio) throws Exception {
+	public void recebe(Relatorio relatorio){
 		
 		String arquivoProcurado = relatorio.getNome() + ".f" + relatorio.getServidor().getNumero();
 
@@ -30,10 +35,21 @@ public class Transfer {
 				relatorio.getServidor().getCaminhoBk() + arquivoProcurado, 
 				this.pathDestino, 
 				this.login,
-				this.password);		
+				this.password);				
+	
+		try {
+			
+			log.info("Buscando arquivo {} no servidor {}", arquivoProcurado, dados.getHost());
+			
+			sftp.transfere(dados);
+			
+			log.info("Arquivos encontrados e copiados");
+			
+		} catch (Exception e) {
+			log.error("Erro na transferencia de arquivo: " + e.getMessage());
+		}
 		
-
-		sftp.transfere(dados);
+		
 
 	}
 

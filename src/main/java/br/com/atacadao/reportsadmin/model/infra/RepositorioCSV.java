@@ -15,18 +15,21 @@ public class RepositorioCSV implements Repositorio{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public boolean atualiza(Relatorio relatorio) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 
 	@Override
 	public void adiciona(File file, String novoNome) {
 		
 		file.renameTo(new File(path + novoNome + TipoRelatorio.CSV.getExtensao()));
 		
+	}
+
+	@Override
+	public boolean ehDisponivel(Relatorio relatorio) {
+		
+		File file = new File(path + relatorio.getNomeArquivo());	
+		
+		return file.exists();
 	}
 
 	

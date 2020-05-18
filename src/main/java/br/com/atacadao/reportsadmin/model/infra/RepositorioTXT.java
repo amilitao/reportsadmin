@@ -15,21 +15,18 @@ public class RepositorioTXT implements Repositorio {
 	}
 
 	@Override
-	public boolean atualiza(Relatorio relatorio) {
-
-		// verifica se existe o arquivo na pasta recebidos
-		// o arquivo já deve ter sido renomeado
-		// se nao encontrar retorna falso
-
-		return false;
-
-	}
-
-	@Override
 	public void adiciona(File file, String novoNome) {
 
 		file.renameTo(new File(path + novoNome));
 
+	}
+
+	@Override
+	public boolean ehDisponivel(Relatorio relatorio) {
+
+		File file = new File(path + relatorio.getNomeArquivo());
+
+		return file.exists();
 	}
 
 }

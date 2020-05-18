@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<property name="LOG_DIR" value="c:/home/usuario/projetos/reportsadmin/log" />
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>
+				%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n
+			</Pattern>
+		</layout>
+	</appender>
+
+	<property name="LOG_FILE" value="baixaRelatoriosDiariosTarefa" />	
+	<appender name="FILE_BAIXARELATORIOSDIARIOSTAREFA"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_DIR}/${LOG_FILE}.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- daily rollover -->
+			<fileNamePattern>${LOG_DIR}/%d{yyyy/MM}/${LOG_FILE}.gz</fileNamePattern>
+
+			<!-- keep 30 days' worth of history capped at 3GB total size -->
+			<maxHistory>1</maxHistory>
+			<totalSizeCap>2MB</totalSizeCap>
+		</rollingPolicy>
+		<encoder>
+			<pattern>
+				%d{dd-MM-yyyy HH:mm:ss} > %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	
+	<property name="LOG_FILE" value="enviaRelatoriosDiariosTarefa" />	
+	<appender name="FILE_ENVIARELATORIOSDIARIOSTAREFA"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_DIR}/${LOG_FILE}.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- daily rollover -->
+			<fileNamePattern>${LOG_DIR}/%d{yyyy/MM}/${LOG_FILE}.gz</fileNamePattern>
+
+			<!-- keep 30 days' worth of history capped at 3GB total size -->
+			<maxHistory>1</maxHistory>
+			<totalSizeCap>2MB</totalSizeCap>
+		</rollingPolicy>
+		<encoder>
+			<pattern>
+				%d{dd-MM-yyyy HH:mm:ss} > %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	
+	<property name="LOG_FILE" value="apagaRelatoriosDiariosTarefa" />	
+	<appender name="FILE_APAGARELATORIOSDIARIOSTAREFA"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_DIR}/${LOG_FILE}.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- daily rollover -->
+			<fileNamePattern>${LOG_DIR}/%d{yyyy/MM}/${LOG_FILE}.gz</fileNamePattern>
+
+			<!-- keep 30 days' worth of history capped at 3GB total size -->
+			<maxHistory>1</maxHistory>
+			<totalSizeCap>2MB</totalSizeCap>
+		</rollingPolicy>
+		<encoder>
+			<pattern>
+				%d{dd-MM-yyyy HH:mm:ss} > %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	
+	<property name="LOG_FILE" value="geraRelatoriosDiariosTarefa" />	
+	<appender name="FILE_GERARELATORIOSDIARIOSTAREFA"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_DIR}/${LOG_FILE}.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- daily rollover -->
+			<fileNamePattern>${LOG_DIR}/%d{yyyy/MM}/${LOG_FILE}.gz</fileNamePattern>
+
+			<!-- keep 30 days' worth of history capped at 3GB total size -->
+			<maxHistory>1</maxHistory>
+			<totalSizeCap>2MB</totalSizeCap>
+		</rollingPolicy>
+		<encoder>
+			<pattern>
+				%d{dd-MM-yyyy HH:mm:ss} > %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	
+	<property name="LOG_FILE" value="email" />	
+	<appender name="FILE_EMAIL"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_DIR}/${LOG_FILE}.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- daily rollover -->
+			<fileNamePattern>${LOG_DIR}/%d{yyyy/MM}/${LOG_FILE}.gz</fileNamePattern>
+
+			<!-- keep 30 days' worth of history capped at 3GB total size -->
+			<maxHistory>1</maxHistory>
+			<totalSizeCap>2MB</totalSizeCap>
+		</rollingPolicy>
+		<encoder>
+			<pattern>
+				%d{dd-MM-yyyy HH:mm:ss} - %msg%n
+			</pattern>
+		</encoder> 
+	</appender>
+	
+	<property name="LOG_FILE" value="transfer" />
+	<appender name="FILE_TRANSFER"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_DIR}/${LOG_FILE}.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- daily rollover -->
+			<fileNamePattern>${LOG_DIR}/%d{yyyy/MM}/${LOG_FILE}.gz</fileNamePattern>
+
+			<!-- keep 30 days' worth of history capped at 3GB total size -->
+			<maxHistory>1</maxHistory>
+			<totalSizeCap>2MB</totalSizeCap>
+		</rollingPolicy>
+		<encoder>
+			<pattern>
+				%d{dd-MM-yyyy HH:mm:ss} > %msg%n
+			</pattern>
+		</encoder>
+	</appender>	
+	
+	<property name="LOG_FILE" value="converter" />	
+	<appender name="FILE_CONVERTER"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_DIR}/${LOG_FILE}.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- daily rollover -->
+			<fileNamePattern>${LOG_DIR}/%d{yyyy/MM}/${LOG_FILE}.gz</fileNamePattern>
+
+			<!-- keep 30 days' worth of history capped at 3GB total size -->
+			<maxHistory>1</maxHistory>
+			<totalSizeCap>2MB</totalSizeCap>
+		</rollingPolicy>
+		<encoder>
+			<pattern>
+				%d{dd-MM-yyyy HH:mm:ss} > %msg%n
+			</pattern>
+		</encoder>
+	</appender>	
+	
+
+	<logger name="br.com.atacadao.reportsadmin.tarefa.BaixaRelatoriosDiariosTarefa" level="INFO"
+		additivity="false">
+		<appender-ref ref="FILE_BAIXARELATORIOSDIARIOSTAREFA" />
+	</logger>
+
+	<logger name="br.com.atacadao.reportsadmin.tarefa.EnviaRelatoriosDiariosTarefa" level="INFO"
+		additivity="false">
+		<appender-ref ref="FILE_ENVIARELATORIOSDIARIOSTAREFA" />
+	</logger>
+	
+	<logger name="br.com.atacadao.reportsadmin.tarefa.ApagaRelatoriosDiariosTarefa" level="INFO"
+		additivity="false">
+		<appender-ref ref="FILE_APAGARELATORIOSDIARIOSTAREFA" />
+	</logger>
+	
+	<logger name="br.com.atacadao.reportsadmin.tarefa.GeraRelatoriosDiariosTarefa" level="INFO"
+		additivity="false">
+		<appender-ref ref="FILE_GERARELATORIOSDIARIOSTAREFA" />
+	</logger>
+	
+	<logger name="br.com.atacadao.reportsadmin.model.mail" level="INFO"
+		additivity="false">
+		<appender-ref ref="FILE_EMAIL" />
+	</logger>		
+	
+	<logger name="br.com.atacadao.reportsadmin.model.jsch" level="INFO"
+		additivity="false">
+		<appender-ref ref="FILE_TRANSFER" />
+	</logger>	
+	
+	<logger name="br.com.atacadao.reportsadmin.model.pdf" level="INFO"
+		additivity="false">
+		<appender-ref ref="FILE_CONVERTER" />
+	</logger>
+	
+
+	<!-- By default, the level of the root level is set to DEBUG -->
+	<root level="INFO">
+		<appender-ref ref="STDOUT" />
+	</root>
+
+</configuration>

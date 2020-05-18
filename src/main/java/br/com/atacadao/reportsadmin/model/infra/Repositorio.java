@@ -6,10 +6,10 @@ import br.com.atacadao.reportsadmin.model.Relatorio;
 
 public interface Repositorio {
 	
-	String getPath();
-
-	boolean atualiza(Relatorio relatorio);
+	String getPath();	
 
 	void adiciona(File file,  String novoNome);
+
+	boolean ehDisponivel(Relatorio relatorio);
 
 }
