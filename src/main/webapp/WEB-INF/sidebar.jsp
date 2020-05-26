@@ -24,7 +24,8 @@
 		<a href="<c:url value="/relatorio/" />"
 			class="w3-bar-item w3-button w3-padding w3-hover-red"> <i
 			class="fa fa-file-pdf-o"></i> Relatorios
-		</a>
+		</a>		
+	
 		
 		 <a href="<c:url value="/funcionario/" />"
 			class="w3-bar-item w3-button w3-padding w3-hover-red"> <i
@@ -82,8 +83,8 @@
 		overlayBg.style.display = "none";
 	}
 	
-
-
+	
+	
 	function myGruposFunc() {
 	  var x = document.getElementById("grupos");
 	  if (x.className.indexOf("w3-show") == -1) {

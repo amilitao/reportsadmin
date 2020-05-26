@@ -2,6 +2,7 @@ package br.com.atacadao.reportsadmin.conf;
 
 import java.util.Properties;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +14,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import br.com.atacadao.reportsadmin.model.PathDiretorioEnum;
+import br.com.atacadao.reportsadmin.model.UsuarioSftp;
+import br.com.atacadao.reportsadmin.model.dao.UsuarioSftpDAO;
 import br.com.atacadao.reportsadmin.model.jsch.Transfer;
 
 @Configuration
@@ -20,6 +23,8 @@ import br.com.atacadao.reportsadmin.model.jsch.Transfer;
 @EnableWebMvc
 public class AppWebConfiguration extends WebMvcConfigurerAdapter{
 	
+	@Autowired
+	private UsuarioSftpDAO usuarioSftpDAO;
 	
 
 	@Bean
@@ -71,10 +76,12 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter{
 	@Bean
 	public Transfer getTransfer() {	
 		
+		UsuarioSftp usuario = usuarioSftpDAO.getUsuarioSftp();
+		
 		Transfer transfer = new Transfer();
-		transfer.setPathDestino(PathDiretorioEnum.DIR_RECEBIDOS.getPath());
-		transfer.setLogin("amilitao");
-		transfer.setPassword("springMVC@20");
+		transfer.setPathDestino(PathDiretorioEnum.DIR_RECEBIDOS.getPath());		
+		transfer.setLogin(usuario.getLogin());
+		transfer.setPassword(usuario.getPassword());
 		
 		return transfer;
 		
