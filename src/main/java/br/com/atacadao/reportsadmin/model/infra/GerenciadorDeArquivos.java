@@ -19,21 +19,33 @@ public class GerenciadorDeArquivos {
 
 	public boolean atualiza(Relatorio relatorio) {
 
+		limpaDiretorioRecebidos();
+
 		transfer.recebe(relatorio);
 
 		moveRecebidos();
-		
+
 		if (relatorio.getTipoRelatorio().equals(TipoRelatorio.PDF)) {
 			ConversorDeRelatorio conversor = new ConversorDeRelatorio();
 			conversor.converteTxtParaPdf(relatorio);
 		}
 
-		if (relatorio.getTipoRelatorio().getRepositorio().ehDisponivel(relatorio)) {			
+		if (relatorio.getTipoRelatorio().getRepositorio().ehDisponivel(relatorio)) {
 
 			return true;
 		}
 
 		return false;
+
+	}
+
+	private void limpaDiretorioRecebidos() {
+
+		File dir_recebidos = new File(PathDiretorioEnum.DIR_RECEBIDOS.getPath());
+
+		for (File recebido : dir_recebidos.listFiles()) {
+			recebido.delete();
+		}
 
 	}
 
@@ -43,7 +55,7 @@ public class GerenciadorDeArquivos {
 
 		for (File recebido : dir_recebidos.listFiles()) {
 
-			TipoRelatorio tipo = indentificaTipoRelatorio(recebido.getName());
+			TipoRelatorio tipo = indentificaTipoDeArquivo(recebido.getName());
 
 			tipo.getRepositorio().adiciona(recebido, identificaNomeRelatorio(recebido));
 
@@ -51,7 +63,16 @@ public class GerenciadorDeArquivos {
 
 	}
 
-	private TipoRelatorio indentificaTipoRelatorio(String recebido) {
+	/**
+	 * *
+	 * 
+	 * @param recebido
+	 * @return * Caso seja adicionado um novo tipo de arquivo ao sistema, será
+	 *         necessario incluir o tipo do arquivo no metodo abaixo para que possa
+	 *         ser identificado
+	 */
+
+	private TipoRelatorio indentificaTipoDeArquivo(String recebido) {
 
 		String ext = recebido.substring(recebido.length() - 4, recebido.length());
 

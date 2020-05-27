@@ -13,9 +13,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import br.com.atacadao.reportsadmin.model.PathDiretorioEnum;
-import br.com.atacadao.reportsadmin.model.UsuarioSftp;
-import br.com.atacadao.reportsadmin.model.dao.UsuarioSftpDAO;
+import br.com.atacadao.reportsadmin.model.Usuario;
+import br.com.atacadao.reportsadmin.model.dao.UsuarioDAO;
 import br.com.atacadao.reportsadmin.model.jsch.Transfer;
 
 @Configuration
@@ -24,9 +23,8 @@ import br.com.atacadao.reportsadmin.model.jsch.Transfer;
 public class AppWebConfiguration extends WebMvcConfigurerAdapter{
 	
 	@Autowired
-	private UsuarioSftpDAO usuarioSftpDAO;
+	private UsuarioDAO usuarioDAO;
 	
-
 	@Bean
 	public InternalResourceViewResolver internalResourceViewResolver() {
 		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
@@ -74,12 +72,11 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter{
 	}
 	
 	@Bean
-	public Transfer getTransfer() {	
-		
-		UsuarioSftp usuario = usuarioSftpDAO.getUsuarioSftp();
+	public Transfer getTransfer() {			
+		 		
+		Usuario usuario = usuarioDAO.findUserByRole("SFTP");
 		
 		Transfer transfer = new Transfer();
-		transfer.setPathDestino(PathDiretorioEnum.DIR_RECEBIDOS.getPath());		
 		transfer.setLogin(usuario.getLogin());
 		transfer.setPassword(usuario.getPassword());
 		

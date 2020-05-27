@@ -32,4 +32,14 @@ public class RepositorioPDF implements Repositorio {
 		return file.exists();
 	}
 
+
+	@Override
+	public void excluiAntigo(String novoNome) {
+		
+		File antigo = new File(PathDiretorioEnum.DIR_PDF.getPath() + novoNome);
+		
+		antigo.delete();
+		
+	}
+
 }

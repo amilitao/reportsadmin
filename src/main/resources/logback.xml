@@ -11,8 +11,8 @@
 		</layout>
 	</appender>
 
-	<property name="LOG_FILE" value="baixaRelatoriosDiariosTarefa" />	
-	<appender name="FILE_BAIXARELATORIOSDIARIOSTAREFA"
+	<property name="LOG_FILE" value="buscaRelatoriosDiariosTarefa" />	
+	<appender name="FILE_BUSCARELATORIOSDIARIOSTAREFA"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>${LOG_DIR}/${LOG_FILE}.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -30,8 +30,8 @@
 		</encoder>
 	</appender>
 	
-	<property name="LOG_FILE" value="enviaRelatoriosDiariosTarefa" />	
-	<appender name="FILE_ENVIARELATORIOSDIARIOSTAREFA"
+	<property name="LOG_FILE" value="enviaRelatoriosTarefa" />	
+	<appender name="FILE_ENVIARELATORIOSTAREFA"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>${LOG_DIR}/${LOG_FILE}.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -49,8 +49,8 @@
 		</encoder>
 	</appender>
 	
-	<property name="LOG_FILE" value="apagaRelatoriosDiariosTarefa" />	
-	<appender name="FILE_APAGARELATORIOSDIARIOSTAREFA"
+	<property name="LOG_FILE" value="apagaRelatoriosAntigosTarefa" />	
+	<appender name="FILE_APAGARELATORIOSANTIGOSTAREFA"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>${LOG_DIR}/${LOG_FILE}.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -68,8 +68,8 @@
 		</encoder>
 	</appender>
 	
-	<property name="LOG_FILE" value="geraRelatoriosDiariosTarefa" />	
-	<appender name="FILE_GERARELATORIOSDIARIOSTAREFA"
+	<property name="LOG_FILE" value="geraRelatoriosTarefa" />	
+	<appender name="FILE_GERARELATORIOSTAREFA"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>${LOG_DIR}/${LOG_FILE}.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -145,24 +145,24 @@
 	</appender>	
 	
 
-	<logger name="br.com.atacadao.reportsadmin.tarefa.BaixaRelatoriosDiariosTarefa" level="INFO"
+	<logger name="br.com.atacadao.reportsadmin.tarefa.BuscaRelatoriosTarefa" level="INFO"
 		additivity="false">
-		<appender-ref ref="FILE_BAIXARELATORIOSDIARIOSTAREFA" />
+		<appender-ref ref="FILE_BUSCARELATORIOSTAREFA" />
 	</logger>
 
 	<logger name="br.com.atacadao.reportsadmin.tarefa.EnviaRelatoriosDiariosTarefa" level="INFO"
 		additivity="false">
-		<appender-ref ref="FILE_ENVIARELATORIOSDIARIOSTAREFA" />
+		<appender-ref ref="FILE_ENVIARELATORIOSTAREFA" />
 	</logger>
 	
 	<logger name="br.com.atacadao.reportsadmin.tarefa.ApagaRelatoriosDiariosTarefa" level="INFO"
 		additivity="false">
-		<appender-ref ref="FILE_APAGARELATORIOSDIARIOSTAREFA" />
+		<appender-ref ref="FILE_APAGARELATORIOSANTIGOSTAREFA" />
 	</logger>
 	
 	<logger name="br.com.atacadao.reportsadmin.tarefa.GeraRelatoriosDiariosTarefa" level="INFO"
 		additivity="false">
-		<appender-ref ref="FILE_GERARELATORIOSDIARIOSTAREFA" />
+		<appender-ref ref="FILE_GERARELATORIOSTAREFA" />
 	</logger>
 	
 	<logger name="br.com.atacadao.reportsadmin.model.mail" level="INFO"

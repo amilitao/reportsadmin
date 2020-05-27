@@ -32,5 +32,15 @@ public class RepositorioCSV implements Repositorio{
 		return file.exists();
 	}
 
+
+	@Override
+	public void excluiAntigo(String novoNome) {
+		
+		File antigo = new File(PathDiretorioEnum.DIR_CSV.getPath() + novoNome);
+		
+		antigo.delete();
+		
+	}
+
 	
 }

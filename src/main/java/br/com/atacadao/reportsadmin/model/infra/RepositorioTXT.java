@@ -16,9 +16,20 @@ public class RepositorioTXT implements Repositorio {
 
 	@Override
 	public void adiciona(File file, String novoNome) {
+		
+		excluiAntigo(novoNome);
 
 		file.renameTo(new File(path + novoNome));
 
+	}
+
+	@Override
+	public void excluiAntigo(String novoNome) {
+		
+		File antigo = new File(PathDiretorioEnum.DIR_TXT.getPath() + novoNome);
+			
+		antigo.delete();
+		
 	}
 
 	@Override

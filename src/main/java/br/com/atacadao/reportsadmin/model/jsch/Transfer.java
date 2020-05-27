@@ -3,6 +3,7 @@ package br.com.atacadao.reportsadmin.model.jsch;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import br.com.atacadao.reportsadmin.model.PathDiretorioEnum;
 import br.com.atacadao.reportsadmin.model.Relatorio;
 
 public class Transfer {
@@ -11,7 +12,7 @@ public class Transfer {
 	
 	private String login;
 	private String password;
-	private String pathDestino;
+	private String pathDestino = PathDiretorioEnum.DIR_RECEBIDOS.getPath();
 	private Sftp sftp = new Sftp();
 
 	public void setLogin(String login) {
@@ -26,7 +27,7 @@ public class Transfer {
 		this.pathDestino = pathDestino;
 	}
 
-	public void recebe(Relatorio relatorio){
+	public void recebe(Relatorio relatorio){		
 		
 		String arquivoProcurado = relatorio.getNome() + ".f" + relatorio.getServidor().getNumero();
 
@@ -37,7 +38,7 @@ public class Transfer {
 				this.login,
 				this.password);				
 	
-		try {
+		try {			
 			
 			log.info("Buscando arquivo {} no servidor {}", arquivoProcurado, dados.getHost());
 			
