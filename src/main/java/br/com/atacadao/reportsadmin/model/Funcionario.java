@@ -25,6 +25,7 @@ public class Funcionario implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	
 	@NotBlank(message = "Este campo não pode ser vazio")
 	private String nome;
 

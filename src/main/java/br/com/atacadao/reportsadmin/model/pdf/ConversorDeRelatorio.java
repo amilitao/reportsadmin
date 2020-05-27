@@ -29,9 +29,17 @@ public class ConversorDeRelatorio {
 
 			log.info("Iniciando conversão do arquivo {}", file.getName());
 
-			util.converteTxtParaPdf(file, relatorio.getTamanhoFonte());
+			if (file.exists()) {
 
-			log.info("Arquivo {} convertido para PDF com sucesso", file.getName());
+				util.converteTxtParaPdf(file, relatorio.getTamanhoFonte());
+				
+				log.info("Arquivo {} convertido para PDF com sucesso", file.getName());
+
+			}
+			
+			log.info("Arquivo {} não pode ser convertido. Falta arquivo txt", file.getName());
+
+			
 
 		} catch (DocumentException | IOException e) {
 			log.error("Erro na conversão do arquivo {} : {}", file.getName(), e.getMessage());

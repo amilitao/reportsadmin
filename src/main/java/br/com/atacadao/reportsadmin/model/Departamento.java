@@ -10,6 +10,9 @@ import org.hibernate.validator.constraints.NotBlank;
 @Entity
 public class Departamento {
 	
+	//testando
+	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -28,7 +31,8 @@ public class Departamento {
 
 	public String getNome() {
 		return nome;
-	}
+	}	
+	
 
 	public void setNome(String nome) {
 		this.nome = nome;
