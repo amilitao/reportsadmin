@@ -144,11 +144,10 @@ public class Relatorio implements Serializable {
 					this.getTipoRelatorio().getExtensao();
 	}
 
-	public File getFile() {		
-		return new File(
-				this.tipoRelatorio.getRepositorio().getPath() 
-				+ this.getNomeArquivo());
+	public String getAbsoluteRemotePath() {
+		return this.getServidor().getCaminhoBk();
 	}
+
 	
 	
 	

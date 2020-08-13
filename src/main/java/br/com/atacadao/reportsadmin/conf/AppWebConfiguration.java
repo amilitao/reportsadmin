@@ -2,7 +2,6 @@ package br.com.atacadao.reportsadmin.conf;
 
 import java.util.Properties;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -13,17 +12,12 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import br.com.atacadao.reportsadmin.model.Usuario;
-import br.com.atacadao.reportsadmin.model.dao.UsuarioDAO;
-import br.com.atacadao.reportsadmin.model.jsch.Transfer;
-
 @Configuration
 @ComponentScan(basePackages = "br.com.atacadao.reportsadmin")
 @EnableWebMvc
 public class AppWebConfiguration extends WebMvcConfigurerAdapter{
 	
-	@Autowired
-	private UsuarioDAO usuarioDAO;
+	
 	
 	@Bean
 	public InternalResourceViewResolver internalResourceViewResolver() {
@@ -71,17 +65,6 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter{
 		return mailSender;
 	}
 	
-	@Bean
-	public Transfer getTransfer() {			
-		 		
-		Usuario usuario = usuarioDAO.findUserByRole("SFTP");
-		
-		Transfer transfer = new Transfer();
-		transfer.setLogin(usuario.getLogin());
-		transfer.setPassword(usuario.getPassword());
-		
-		return transfer;
-		
-	}
+	
 	
 }

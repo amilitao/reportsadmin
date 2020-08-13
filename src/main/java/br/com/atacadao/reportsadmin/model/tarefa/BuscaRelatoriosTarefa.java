@@ -12,11 +12,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.atacadao.reportsadmin.model.Relatorio;
 import br.com.atacadao.reportsadmin.model.Servidor;
-import br.com.atacadao.reportsadmin.model.StatusRelatorio;
 import br.com.atacadao.reportsadmin.model.Tarefa;
 import br.com.atacadao.reportsadmin.model.dao.ServidorDAO;
 import br.com.atacadao.reportsadmin.model.dao.TarefaDAO;
-import br.com.atacadao.reportsadmin.model.infra.GerenciadorDeArquivos;
 
 @Service
 @Transactional
@@ -28,9 +26,7 @@ public class BuscaRelatoriosTarefa {
 
 	@Autowired
 	private ServidorDAO servidorDAO;	
-
-	@Autowired
-	private GerenciadorDeArquivos gerenciadorDeArquivos;
+	
 
 	private static final Logger log = LoggerFactory.getLogger(BuscaRelatoriosTarefa.class);
 
@@ -56,17 +52,7 @@ public class BuscaRelatoriosTarefa {
 
 				for (Relatorio relatorio : servidor.getRelatorios()) {
 
-					if (gerenciadorDeArquivos.atualiza(relatorio)) {
-
-						relatorio.setStatus(StatusRelatorio.DISPONIVEL);
-						log.info("Arquivo {} encontrado e copiado ",
-								relatorio.getNome() + ".f" + relatorio.getServidor());
-
-					} else {
-
-						relatorio.setStatus(StatusRelatorio.INDISPONIVEL);
-						log.info("Arquivo {} não encontrado ", relatorio.getNome() + ".f" + relatorio.getServidor());
-					}
+					
 
 				}
 

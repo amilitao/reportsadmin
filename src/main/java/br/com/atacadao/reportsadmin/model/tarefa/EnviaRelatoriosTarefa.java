@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.atacadao.reportsadmin.model.Funcionario;
 import br.com.atacadao.reportsadmin.model.Relatorio;
+import br.com.atacadao.reportsadmin.model.Repositorio;
 import br.com.atacadao.reportsadmin.model.StatusRelatorio;
 import br.com.atacadao.reportsadmin.model.Tarefa;
 import br.com.atacadao.reportsadmin.model.dao.FuncionarioDAO;
@@ -32,6 +33,9 @@ public class EnviaRelatoriosTarefa {
 
 	@Autowired
 	private Correio correio;
+	
+	@Autowired
+	private Repositorio repositorio;
 
 	private static final Logger log = LoggerFactory.getLogger(EnviaRelatoriosTarefa.class);
 
@@ -56,7 +60,7 @@ public class EnviaRelatoriosTarefa {
 
 					if (relatorio.getStatus() == StatusRelatorio.DISPONIVEL) {
 
-						correio.envia(new Email(funcionario, relatorio));
+						correio.envia(new Email(funcionario, relatorio, repositorio.get(relatorio)));
 
 						log.info("Arquivo {} foi enviado para {}", relatorio.getNomeArquivo(), funcionario.getEmail());
 					} else {

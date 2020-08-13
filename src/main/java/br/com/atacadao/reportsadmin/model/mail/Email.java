@@ -5,6 +5,7 @@ import java.io.File;
 import br.com.atacadao.reportsadmin.model.Funcionario;
 import br.com.atacadao.reportsadmin.model.Relatorio;
 
+
 public class Email {
 
 	private String from = "producao@atacadao.com.br";;
@@ -13,19 +14,15 @@ public class Email {
 	private String content;
 	private File attachment;
 
-	public Email(Funcionario funcionario, Relatorio relatorio) {
+	public Email(Funcionario funcionario, Relatorio relatorio, File anexo) {
 		this.to = funcionario.getEmail();
 		this.subject = relatorio.getNomeArquivo() + " - " + relatorio.getDescricao();
 		this.content = "Segue anexo relatorio " + relatorio.getNomeArquivo();
-		
-		File anexo = relatorio.getFile();		
-		
+				
 		if (anexo != null) {
 			this.setAttachment(anexo);
-		}
+		}		
 		
-		
-		System.out.println("Criou um email");
 	}
 
 	public String getFrom() {

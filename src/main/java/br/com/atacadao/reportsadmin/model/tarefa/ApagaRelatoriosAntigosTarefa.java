@@ -47,20 +47,7 @@ public class ApagaRelatoriosAntigosTarefa {
 
 			Calendar dataHora = Calendar.getInstance();
 
-			excluiArquivosDe(PathDiretorioEnum.DIR_TXT);
-			excluiArquivosDe(PathDiretorioEnum.DIR_PDF);
-			excluiArquivosDe(PathDiretorioEnum.DIR_CSV);
-
-			for (Servidor servidor : servidorDAO.list()) {
-
-				for (Relatorio relatorio : servidor.getRelatorios()) {
-				
-					relatorio.setStatus(StatusRelatorio.INDISPONIVEL);
-					relatorio.setDtAtualizacao(Calendar.getInstance());					
-					log.info("Status do relatorio {} atualizado para INDISPONIVEL", 
-							relatorio.getNome() + ".f" + relatorio.getServidor().getNumero());
-				}
-			}
+			
 
 			log.info("Atualizando data de execucao da tarefa para {}", dataHora.getTime());
 			tarefa.setDt_ultima_execucao(dataHora);

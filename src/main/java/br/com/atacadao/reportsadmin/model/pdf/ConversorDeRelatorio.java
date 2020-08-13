@@ -21,7 +21,7 @@ public class ConversorDeRelatorio {
 	public void converteTxtParaPdf(Relatorio relatorio) {
 
 		File file = new File(
-				PathDiretorioEnum.DIR_TXT.getPath() + relatorio.getNome() + ".f" + relatorio.getServidor().getNumero());
+				PathDiretorioEnum.DIR_REPOSITORIO.getPath() + relatorio.getNome() + ".f" + relatorio.getServidor().getNumero());
 
 		ConverterUtil util = new ConverterUtil(converter);
 

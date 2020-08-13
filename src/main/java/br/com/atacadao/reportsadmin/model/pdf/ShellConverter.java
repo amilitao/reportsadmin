@@ -23,7 +23,7 @@ public class ShellConverter implements Converter {
 			throw new DocumentException("Arquivo sem conteudo");
 		}
 		
-		File pdf = new File(PathDiretorioEnum.DIR_PDF.getPath() 
+		File pdf = new File(PathDiretorioEnum.DIR_REPOSITORIO.getPath() 
 				+ arquivo.getName() + TipoRelatorio.PDF.getExtensao());
 
 		final ArrayList<String> commands = new ArrayList<String>();

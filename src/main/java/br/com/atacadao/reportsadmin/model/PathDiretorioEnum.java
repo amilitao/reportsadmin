@@ -10,25 +10,25 @@ public enum PathDiretorioEnum {
 	DIR_RECEBIDOS("c:" + File.separator + "home" + File.separator + "usuario" + File.separator + "projetos"
 			+ File.separator + "reportsadmin" + File.separator + "recebidos" + File.separator),
 	
-	DIR_PDF("c:" + File.separator + "home" + File.separator + "usuario" + File.separator + "projetos" + File.separator
-			+ "reportsadmin" + File.separator + "repositorio" + File.separator + "pdf" + File.separator),
+	DIR_ENVIAR("c:" + File.separator + "home" + File.separator + "usuario" + File.separator + "projetos"
+			+ File.separator + "reportsadmin" + File.separator + "enviar" + File.separator),
 	
-	DIR_CSV("c:" + File.separator + "home" + File.separator + "usuario" + File.separator + "projetos" + File.separator
-			+ "reportsadmin" + File.separator + "repositorio" + File.separator + "csv" + File.separator),
+	DIR_REPOSITORIO("c:" + File.separator + "home" + File.separator + "usuario" + File.separator + "projetos" + File.separator
+			+ "reportsadmin" + File.separator + "repositorio" + File.separator),
 	
-	DIR_TXT("c:" + File.separator + "home" + File.separator + "usuario" + File.separator + "projetos" + File.separator
-			+ "reportsadmin" + File.separator + "repositorio" + File.separator + "txt" + File.separator),
-	
+	DIR_TEMP("c:" + File.separator + "home" + File.separator + "usuario" + File.separator + "projetos"
+			+ File.separator + "reportsadmin" + File.separator + "temp" + File.separator),
+		
 	DIR_LOG("c:" + File.separator + "home" + File.separator + "usuario" + File.separator + "projetos" + File.separator
 			+ "reportsadmin" + File.separator + "log" + File.separator);
 
 	/*
-	 * DIR_BASE("/home/usuario/projetos/reportsadmin"),
-	 * DIR_RECEBIDOS("/home/usuario/projetos/reportsadmin/recebidos"),
-	 * DIR_PDF("/home/usuario/projetos/reportsadmin/repositorio/pdf"),
-	 * DIR_CSV("/home/usuario/projetos/reportsadmin/repositorio/csv"),
-	 * DIR_TXT("/home/usuario/projetos/reportsadmin/repositorio/txt"),
-	 * DIR_LOG("/home/usuario/projetos/reportsadmin/log");
+	 * DIR_BASE("/home/usuario/projetos/reportsadmin/"),
+	 * DIR_RECEBIDOS("/home/usuario/projetos/reportsadmin/recebidos/"),
+	 * DIR_ENVIAR("/home/usuario/projetos/reportsadmin/enviar/"),
+	 * DIR_REPOSITORIO("/home/usuario/projetos/reportsadmin/repositorio/"),
+	 * DIR_TEMP("/home/usuario/projetos/reportsadmin/temp/"),
+	 * DIR_LOG("/home/usuario/projetos/reportsadmin/log/");
 	 */
 
 	private final String path;
