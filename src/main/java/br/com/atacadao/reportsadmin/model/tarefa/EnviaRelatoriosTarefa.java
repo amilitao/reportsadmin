@@ -48,9 +48,7 @@ public class EnviaRelatoriosTarefa {
 
 		Tarefa tarefa = tarefaDAO.findByNome("EnviaRelatoriosTarefa");
 
-		if (tarefa != null && tarefa.isLigado()) {
-
-			Calendar dataHora = Calendar.getInstance();
+		if (tarefa != null && tarefa.isLigado()) {		
 
 			log.info("EnviaRelatoriosTarefa iniciado");
 
@@ -64,15 +62,14 @@ public class EnviaRelatoriosTarefa {
 
 						log.info("Arquivo {} foi enviado para {}", relatorio.getNomeArquivo(), funcionario.getEmail());
 					} else {
-
 						log.info("Arquivo {} indisponivel", relatorio.getNomeArquivo());
 					}
 				}
 			}
 
-			log.info("Atualizando data de execucao da tarefa para {}", dataHora.getTime());
 
-			tarefa.setDt_ultima_execucao(dataHora);
+			tarefa.setDt_ultima_execucao(Calendar.getInstance());
+			log.info("Data de execucao da tarefa atualizada para {}", tarefa.getDt_ultima_execucao());
 
 			log.info("EnviaRelatoriosTarefa finalizado");
 

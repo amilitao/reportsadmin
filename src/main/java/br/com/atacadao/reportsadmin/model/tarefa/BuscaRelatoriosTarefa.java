@@ -10,6 +10,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.atacadao.reportsadmin.model.AtualizadorDeRelatorio;
 import br.com.atacadao.reportsadmin.model.Relatorio;
 import br.com.atacadao.reportsadmin.model.Servidor;
 import br.com.atacadao.reportsadmin.model.Tarefa;
@@ -22,11 +23,13 @@ import br.com.atacadao.reportsadmin.model.dao.TarefaDAO;
 public class BuscaRelatoriosTarefa {
 
 	@Autowired
+	private AtualizadorDeRelatorio atualizador;
+
+	@Autowired
 	private TarefaDAO tarefaDAO;
 
 	@Autowired
-	private ServidorDAO servidorDAO;	
-	
+	private ServidorDAO servidorDAO;
 
 	private static final Logger log = LoggerFactory.getLogger(BuscaRelatoriosTarefa.class);
 
@@ -42,8 +45,6 @@ public class BuscaRelatoriosTarefa {
 
 		if (tarefa != null && tarefa.isLigado()) {
 
-			Calendar dataHora = Calendar.getInstance();
-
 			log.info("BuscaRelatoriosTarefa iniciado");
 
 			List<Servidor> servidores = servidorDAO.list();
@@ -51,21 +52,15 @@ public class BuscaRelatoriosTarefa {
 			for (Servidor servidor : servidores) {
 
 				for (Relatorio relatorio : servidor.getRelatorios()) {
-
-					
-
+					atualizador.atualiza(relatorio);
 				}
-
 			}
 
-			log.info("Atualizando data de execucao da tarefa para {}", dataHora.getTime());
-			
-			tarefa.setDt_ultima_execucao(dataHora);			
+			tarefa.setDt_ultima_execucao(Calendar.getInstance());
+			log.info("Data de execucao da tarefa atualizada para {}", tarefa.getDt_ultima_execucao());
 
 			log.info("BuscaRelatoriosTarefa encerrado");
-
 		} else {
-			
 			log.info("Tarefa BuscaRelatoriosTarefa esta desativado");
 		}
 	}

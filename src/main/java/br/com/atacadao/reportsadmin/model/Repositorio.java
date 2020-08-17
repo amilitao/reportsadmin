@@ -8,13 +8,24 @@ import org.springframework.stereotype.Component;
 public class Repositorio {
 
 	public boolean existe(Relatorio relatorio) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		File arquivo = new File(PathDiretorioEnum.DIR_REPOSITORIO + relatorio.getNomeArquivo());		
+		return arquivo.exists();
 	}
 
 	public File get(Relatorio relatorio) {
-		// TODO Auto-generated method stub
+		
+		if(this.existe(relatorio)) {
+			return new File(PathDiretorioEnum.DIR_REPOSITORIO + relatorio.getNomeArquivo());
+		}
+		
 		return null;
+	}
+	
+	public void apagaRelatorios() {
+		ApagadorDeRelatorio excluidor = new ApagadorDeRelatorio();		
+		excluidor.excluiArquivosDe(PathDiretorioEnum.DIR_REPOSITORIO);		
+		
 	}
 
 }

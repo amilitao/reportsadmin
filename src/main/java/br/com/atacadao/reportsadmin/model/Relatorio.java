@@ -1,6 +1,5 @@
 package br.com.atacadao.reportsadmin.model;
 
-import java.io.File;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Set;
